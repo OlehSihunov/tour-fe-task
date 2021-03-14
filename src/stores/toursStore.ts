@@ -24,4 +24,10 @@ export default class ToursStore {
             console.error(e.message)
         }
     }
+
+    getPage = (page :number,size :number) => {
+      console.log(page,size)
+      const result =  this.tours.filter((el :ITour,index: number) =>index>=(page-1)*size && index<page*size)
+      return result
+    }
 }

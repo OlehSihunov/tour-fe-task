@@ -1,0 +1,11 @@
+.tours {
+   
+    &__page-number {
+        margin: 5px 15px;
+        font-size: 24px;
+        color: #333;
+        &_active {
+            color: #cc5533;
+        }
+    }
+}
