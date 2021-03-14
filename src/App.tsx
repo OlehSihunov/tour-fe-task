@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import Tours from './components/tours/tours';
 import Login from './components/login/login';
 import Cart from './components/cart/cart';
 import Tour from './components/tour/tour';
-
+import rootStore from './stores/rootStore';
 
 function App() {
+  const {getTours} = rootStore.toursStore
+  useEffect(()=>{
+    getTours()
+  })
   return (
     <div className="App">
       <BrowserRouter>
