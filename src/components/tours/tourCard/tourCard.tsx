@@ -1,3 +1,4 @@
+
 import './tourCards.scss';
 import {Link} from 'react-router-dom';
 import ITour from '../../../interfaces/ITour';
@@ -14,4 +15,3 @@ const TourCard = ({tour}: {tour: ITour}) => (
 );
 
 export default TourCard;
-
