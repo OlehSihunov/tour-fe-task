@@ -1,16 +1,16 @@
 
-import './tourCards.scss';
+import './tourCard.scss';
 import {Link} from 'react-router-dom';
 import ITour from '../../../interfaces/ITour';
 
 const TourCard = ({tour}: {tour: ITour}) => (
-  <Link to={`/tour/${tour.id}`} className="tourCard">
+  <Link to={`/tour/${tour.id}`} className="tour-card">
     <img
       src={tour.imageUrl}
-      className="imgTourCard" />
-    <p className="titleCard">{tour.title}</p>
-    <p className="descriptionCard">{tour.description}</p>
-    <p className="priceCard">{tour.price}</p>
+      className="tour-card__img" />
+    <p className="tour-card__title">{tour.title}</p>
+    <p className="tour-card__description">{tour.description}</p>
+    <p className="tour-card__price">{tour.price}</p>
   </Link>
 );
 
