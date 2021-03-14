@@ -1,8 +1,6 @@
 import { observer } from 'mobx-react'
 import React from 'react'
 import rootStore from '../../stores/rootStore'
-import './tours.scss'
-
 const Tours = observer(() => {
     const {tours} = rootStore.toursStore
     return (
@@ -15,4 +13,4 @@ const Tours = observer(() => {
     )
 })
 
-export default Tours;
+export default Tours
