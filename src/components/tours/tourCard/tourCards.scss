@@ -1,0 +1,38 @@
+.tourCard {
+  width: 260px;
+  height: 320px;
+  padding: 10px;
+  box-shadow: 3px 0 20px rgb(0 0 0 / 12%);
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  
+  img {
+    width: 100%;
+    height: 180px;
+  }
+  .titleCard {
+    max-height: 40px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 14px;
+  }
+  .descriptionCard {
+    height: 65px;
+    margin-top: 0;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    margin-bottom: 0;
+  }
+  .priceCard {
+    height: 30px;
+    margin-top: 0;
+    font-size: 22px;
+    text-align: right;
+    font-weight: bold;
+  }
+}
