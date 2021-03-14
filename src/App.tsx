@@ -5,19 +5,11 @@ import Tours from './components/tours/tours';
 import Login from './components/login/login';
 import Cart from './components/cart/cart';
 import Tour from './components/tour/tour';
-import rootStore from './stores/rootStore';
 import { v4 as uuidv4 } from 'uuid';
 uuidv4()
 
 function App() {
-  const {getTours} = rootStore.toursStore
-  useEffect(()=>{
-    getTours()
-    console.log(uuidv4())
-    console.log(uuidv4())
-    console.log(uuidv4())
 
-  })
   return (
     <div className="App">
       <BrowserRouter>
@@ -31,7 +23,7 @@ function App() {
           <Route  path = '/cart'>
             <Cart/>
           </Route>
-          <Route  path = '/tour/id={tourId}'>
+          <Route  path = {`/tour/:id`}>
            <Tour/>
           </Route>
         </Switch>

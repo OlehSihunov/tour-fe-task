@@ -7,10 +7,7 @@ import './tours.scss'
 const Tours = observer(() => {
     const {getPage,tours} = rootStore.toursStore
     const [page,setPage] = useState(2)
-    const [size,setSize] = useState(6)
-    const HandlePagination = () => {
-
-    }
+    const [size] = useState(6)
     const generatePagination = () => {
         const numberOfPages = tours.length/size
         const links = []
@@ -26,7 +23,7 @@ const Tours = observer(() => {
                 return <TourCard key = {tour.id} tour = {tour}></TourCard>
             })}
             <p>{generatePagination().map(el => {
-                return <span className = {`tours__page-number ${el===page?'tours__page-number_active' : ''}`} onClick = {()=>setPage(el)}>{el}</span>
+                return <span key = {el} className = {`tours__page-number ${el===page?'tours__page-number_active' : ''}`} onClick = {()=>setPage(el)}>{el}</span>
             })}</p>
         </div>
     )

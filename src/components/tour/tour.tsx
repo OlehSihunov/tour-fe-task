@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './tour.scss'
+import {useParams} from 'react-router-dom'
+import rootStore from '../../stores/rootStore'
+import ITour from '../../interfaces/ITour'
+
+interface IURLParams {
+    id: string
+}
 
 const Tour = () => {
+    const {getTourById} = rootStore.toursStore
+    const params :IURLParams = useParams()
+    const tour =  getTourById(+params.id)
     return (
+
         <div className='tour'>
-            <h1>Tour</h1>
+        <img src={tour?.imageUrl}  className="tour-card__img" alt="tooo"/>
+        <p className="tour-card__title">{tour?.title}</p>
+        <p className="tour-card__description">{tour?.description}</p>
+        <p className="tour-card__price">{tour?.price}</p>
         </div>
     )
 }

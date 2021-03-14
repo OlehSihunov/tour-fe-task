@@ -26,8 +26,8 @@ export default class ToursStore {
     }
 
     getPage = (page :number,size :number) => {
-      console.log(page,size)
-      const result =  this.tours.filter((el :ITour,index: number) =>index>=(page-1)*size && index<page*size)
-      return result
+      return this.tours.filter((el :ITour,index: number) =>index>=(page-1)*size && index<page*size)
     }
+
+    getTourById = (id:number) => this.tours.find(el => el.id === id)
 }
