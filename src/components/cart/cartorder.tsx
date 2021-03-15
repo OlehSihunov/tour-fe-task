@@ -29,9 +29,9 @@ const CartOrder = observer(({ tour: { id, title, imageUrl, price, personCount } 
       </div>
       <div className="modal-in__container__res">
         <button className="modal-in__container__res__btn" onClick={onRemoveTour}>Delete tour</button>
-        <span className="modal-in__container__res__span">{endedPrice}</span>
+        <span className="modal-in__container__res__span">{endedPrice}$</span>
       </div>
-    </div>
+    </li>
   );
 }
 );

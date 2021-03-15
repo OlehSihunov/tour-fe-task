@@ -35,7 +35,7 @@ const TourCard = observer(({tour: {id, title, imageUrl, description, price}}: {t
       <p className="tour-card__description">{description}</p>
       <div className="tour-card__footer">
         <button className={`tour-card__addBtn${isSelected ? 'Selected' : ''}`}
-          onClick={onAdd}> +</button>
+          onClick={onAdd}>Buy</button>
         <p className="tour-card__price">{price}</p>
       </div>
     </Link>
