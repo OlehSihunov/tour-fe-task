@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import './tour.scss'
 import {useParams} from 'react-router-dom'
 import rootStore from '../../stores/rootStore'
@@ -11,7 +10,7 @@ interface IURLParams {
 const Tour = () => {
     const {getTourById} = rootStore.toursStore
     const params :IURLParams = useParams()
-    const tour =  getTourById(+params.id)
+    const tour :ITour|undefined =  getTourById(+params.id)
     return (
 
         <div className='tour'>

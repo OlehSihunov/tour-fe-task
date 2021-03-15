@@ -4,7 +4,6 @@ import rootStore from '../../stores/rootStore'
 import TourCard from './tourCard/tourCard'
 import './tours.scss'
 import ITour from '../../interfaces/ITour'
-import { get } from 'node:https'
 
 const Tours = observer(() => {
     const {tours} = rootStore.toursStore

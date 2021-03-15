@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import './App.scss';
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import Tours from './components/tours/tours';
