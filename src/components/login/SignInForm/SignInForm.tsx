@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { observer } from 'mobx-react';
 import { useHistory } from "react-router-dom";
+import './SignInForm.scss';
 import IUser from '../../../interfaces/IUser';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -23,12 +24,12 @@ const SignInForm = observer(({signIn, signOut}:ILoginPageProps) => {
     }
 
     return(
-        <div className="login-form">
+        <div className="form login-form">
             <form onSubmit={handleSignIn}>                    
-                    <input value={login} onChange={(e) => setLogin(e.target.value)}
+                    <input className="input" value={login} onChange={(e) => setLogin(e.target.value)}
                     type="text" placeholder="Enter login" /><br />
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
-                    <input type="submit" value="LogIn"/>
+                    <input className="input" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
+                    <input className="submit-btn" type="submit" value="LogIn"/>
                 </form> 
         </div>
     )
