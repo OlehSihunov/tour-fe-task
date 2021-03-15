@@ -6,40 +6,34 @@ import rootStore from '../../../stores/rootStore';
 import { v4 as uuidv4 } from 'uuid';
 
 interface  ILoginPageProps{
-    logining:  (newUser: IUser) => void
-    logouting: () => void
+    signIn:  (newUser: IUser) => void
+    signOut: () => void
 }
-const LoginPage = observer(({logining, logouting}:ILoginPageProps) => {    
-    const {isLogged, isUserLogged} = rootStore.loginStore
+const SignInForm = observer(({signIn, signOut}:ILoginPageProps) => {    
+    const {isLogged} = rootStore.loginStore
     const [login, setLogin] =useState('');
     const [password, setPassword] =useState('');
     const history = useHistory();
-    const signIn = () => {
+    const handleSignIn = () => {
         if(login === '' || password === ''){
             alert("log and pass err")
             return
         }
         const newUser: IUser = {login, password, id: uuidv4()}
-        isUserLogged(newUser)
-        if(isLogged){
-            logining(newUser)
-            history.push('/')
-        }
+        signIn(newUser)
+        history.push('/')
     }
 
     return(
         <div className="login-form">
-            {isLogged
-             ?<form onSubmit={()=>signIn()}>                    
+            <form onSubmit={handleSignIn}>                    
                     <input value={login} onChange={(e) => setLogin(e.target.value)}
                     type="text" placeholder="Enter login" /><br />
                     <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
                     <input type="submit" value="LogIn"/>
-                </form>      
-            : <button onClick={()=>logouting()}>LogOut</button>
-            }                         
+                </form> 
         </div>
     )
 })
 
-export default LoginPage
+export default SignInForm

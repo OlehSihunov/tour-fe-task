@@ -1,4 +1,3 @@
-import {useMemo} from 'react';
 import './tourCard.scss';
 import {Link} from 'react-router-dom';
 import ITour from '../../../interfaces/ITour';
@@ -9,8 +8,7 @@ import ITourStore from '../../../interfaces/ITourstore';
 
 const TourCard = observer(({tour: {id, title, imageUrl, description, price}}: {tour: ITour}) => {
   const {addNewTour, selectedTours} = rootStore.cartStore;
-  const isSelected = useMemo(() =>
-    selectedTours.find(tour => tour.id === id), [selectedTours])
+  const isSelected = !!selectedTours.find(tour => tour.id === id)
   const onAdd = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (isSelected) {
@@ -32,7 +30,7 @@ const TourCard = observer(({tour: {id, title, imageUrl, description, price}}: {t
     <Link to={`/tour/${id}`} className="tour-card">
       <img
         src={imageUrl}
-        className="tour-card__img" />
+        className="tour-card__img" alt = 'tour-card-img' />
       <p className="tour-card__title">{title}</p>
       <p className="tour-card__description">{description}</p>
       <div className="tour-card__footer">

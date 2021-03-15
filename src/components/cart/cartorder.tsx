@@ -20,7 +20,7 @@ const CartOrder = observer(({ tour: { id, title, imageUrl, price, personCount } 
 
   return (
     <div className="modal-in__container">
-      <img src={imageUrl} className="modal-in__container__img" />
+      <img src={imageUrl} className="modal-in__container__img" alt = 'cartholder img'/>
       <span className="modal-in__container__title">{title}</span>
       <div className="modal-in__container__counter">
         <button className="modal-in__container__counter__btn" onClick={onRemovePerson} disabled={personCount===1}>-</button>

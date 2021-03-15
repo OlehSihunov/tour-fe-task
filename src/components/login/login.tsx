@@ -2,18 +2,17 @@ import React from 'react';
 import './login.scss';
 import { observer } from 'mobx-react';
 import rootStore from '../../stores/rootStore';
-import SignUpPage from './SignUpPage/SignUpPage';
-import SignInPage from './SignInPage/SignInPage';
-import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
+import SignUpForm from './SignUpForm/SignUpForm';
+import SignInForm from './SignInForm/SignInForm';
 
-const SignIn = observer(() => {
-    const { addNewUser, logining, logouting} = rootStore.loginStore
+const LoginPage = observer(() => {
+    const { addNewUser, SignIn, SignOut} = rootStore.loginStore
     return (
        <div className="login-wrapper">
-           <SignInPage logining={logining} logouting={logouting}/>
-           <SignUpPage addNewUser={addNewUser}/>           
+           <SignInForm signIn={SignIn} signOut={SignOut}/> 
+           <SignUpForm addNewUser={addNewUser}/>           
        </div>
     )
 })
 
-export default SignIn;
+export default LoginPage;
