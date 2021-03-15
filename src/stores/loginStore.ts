@@ -1,5 +1,4 @@
 import { action, makeObservable, observable } from 'mobx';
-import { stringify } from 'node:querystring';
 import IUser from '../interfaces/IUser';
 
 export default class LoginState {
@@ -7,9 +6,9 @@ export default class LoginState {
         makeObservable(this);
     }
 
-    @observable user: IUser = JSON.parse(localStorage.getItem('user') || '{}')
-    @observable users: IUser[] = JSON.parse(localStorage.getItem('users') || '[]')
-    @observable isLogged = false
+    @observable user :IUser = JSON.parse(localStorage.getItem('user') || '{}')
+    @observable users :IUser[] = JSON.parse(localStorage.getItem('users') || '[]')
+    @observable isLogged :boolean = false
 
     @action addNewUser = (newUser: IUser) => {
         const l = this.users.find(l => l.login === newUser.login)
@@ -17,32 +16,34 @@ export default class LoginState {
             alert("This Login cannot be created")
         } else {
             this.users.push(newUser)
+            this.user = newUser
             this.updateUsers()
-            console.log(JSON.stringify(this.users))
+            this.isLogged = true;
         }
     }
-    @action logouting = () => {
+    @action SignOut = () => {
         this.user = JSON.parse('{}')
         this.isLogged = false
         this.updateUsers()
     }
-    @action logining = (user: IUser) => {
-        const u = this.users.find(u => u.login === user.login && u.password === user.password)
-        console.log(u)
-        if (u) {
-            this.user = u;
+    @action SignIn = (user: IUser) => {
+        const checkUser = this.users.find(u => u.login === user.login && u.password === user.password)
+        if (checkUser) {
+            this.user = checkUser;
             this.updateUsers()
         } else {
             alert("Wrong Login or Password")
         }
     }
     @action getCurrentUserLogin = () => this.user.login
+    
+    @action isUserLogged = (newUser: IUser) => {
+        this.users.find(l => l.login === newUser.login) ? this.isLogged = true : this.isLogged = false
+    }
+
     updateUsers() {
         localStorage.setItem('users', JSON.stringify(this.users))
         localStorage.setItem('user', JSON.stringify(this.user))
-    }
-    @action isUserLogged = (newUser: IUser) => {
-        this.users.find(l => l.login === newUser.login) ? this.isLogged = true : this.isLogged = false
     }
 
 }

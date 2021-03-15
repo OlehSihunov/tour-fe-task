@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { observer } from 'mobx-react-lite';
 import rootStore from '../../../stores/rootStore';
-import './SignUpPage.scss';
+import './SignUpForm.scss';
 import IUser from '../../../interfaces/IUser';
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
@@ -10,7 +10,7 @@ interface  ISignUpPageProps{
     addNewUser:  (newUser: IUser) => void
 }
 
-const SignInPage = observer(({addNewUser: IUser}:ISignUpPageProps) => {
+const SignUpForm = observer(({addNewUser: IUser}:ISignUpPageProps) => {
 
     const [login, setLogin] =useState('');
     const [password, setPassword] =useState('');
@@ -37,4 +37,4 @@ const SignInPage = observer(({addNewUser: IUser}:ISignUpPageProps) => {
     )
 })
 
-export default SignInPage;
+export default SignUpForm;
