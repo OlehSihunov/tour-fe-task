@@ -21,12 +21,12 @@ export default class LoginState {
             this.isLogged = true;
         }
     }
-    @action SignOut = () => {
+    @action signOut = () => {
         this.user = JSON.parse('{}')
         this.isLogged = false
         this.updateUsers()
     }
-    @action SignIn = (user: IUser) => {
+    @action signIn = (user: IUser) => {
         const checkUser = this.users.find(u => u.login === user.login && u.password === user.password)
         if (checkUser) {
             this.user = checkUser;
