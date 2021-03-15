@@ -19,7 +19,7 @@ const CartOrder = observer(({ tour: { id, title, imageUrl, price, personCount } 
   const endedPrice = personCount * varPrice;
 
   return (
-    <div className="modal-in__container">
+    <li className="modal-in__container">
       <img src={imageUrl} className="modal-in__container__img" />
       <span className="modal-in__container__title">{title}</span>
       <div className="modal-in__container__counter">
@@ -29,9 +29,9 @@ const CartOrder = observer(({ tour: { id, title, imageUrl, price, personCount } 
       </div>
       <div className="modal-in__container__res">
         <button className="modal-in__container__res__btn" onClick={onRemoveTour}>Delete tour</button>
-        <span className="modal-in__container__res__span">{endedPrice}</span>
+        <span className="modal-in__container__res__span">{endedPrice}$</span>
       </div>
-    </div>
+    </li>
   );
 }
 );

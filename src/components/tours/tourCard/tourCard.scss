@@ -1,7 +1,6 @@
 .tour-card {
   width: 25%;
   min-width: 260px;
-  height: 320px;
   padding: 10px;
   margin: 10px;
   box-shadow: 3px 0 20px rgb(0 0 0 / 12%);
@@ -43,15 +42,15 @@
   &__addBtn {
     display: flex;
     border: none;
-    box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.3);
+    box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.6);
     margin: 5px;
-    font-size: larger;
+    font-size: normal;
     &Selected {
       display: flex;
       border: none;
-      box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.3);
+      box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.6);
       margin: 5px;
-      font-size: larger;
+      font-size: normal;
       color: red;
     }
   }
