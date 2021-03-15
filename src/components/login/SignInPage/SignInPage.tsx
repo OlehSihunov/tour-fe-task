@@ -1,25 +1,39 @@
-import React from 'react';
-import { observer } from 'mobx-react-lite';
-import loginStore from '../../../stores/rootStore';
-import './SignInForm.scss'
+import React, {useState} from 'react';
+import { observer } from 'mobx-react';
+import { useHistory } from "react-router-dom";
+import IUser from '../../../interfaces/IUser';
 import rootStore from '../../../stores/rootStore';
+import { v4 as uuidv4 } from 'uuid';
 
-const SignInPage = observer(() => {
-    const {userLogin, userPassword, isLogged, logouting, setUserLoginValue, setUserPasswordValue, signInSubmit} = rootStore.loginStore
-    return (
-        <div>
-            {!isLogged
-                ? <form onSubmit={signInSubmit} className="login-form">
-                    <input value={userLogin} onChange={setUserLoginValue} type="text" placeholder="Enter login" /><br />
-                    <input value={userPassword} onChange={setUserPasswordValue} type="password" placeholder="Enter password" /><br />  
-                    <input type="submit" value="SignIn"/>                 
-                </form>
-                : <button onClick={() => logouting()}>LogOut</button>
-            }
-            {isLogged ? <h1>{`Hello, ${userLogin}`}</h1> : true}
-            {  }
+interface  ILoginPageProps{
+    logining:  (newUser: IUser) => void
+}
+
+const LoginPage = observer(({logining}:ILoginPageProps) => {    
+    const [login, setLogin] =useState('');
+    const [password, setPassword] =useState('');
+    const history = useHistory();
+    const isLogged = false;
+    const signIn = () => {
+        if(login === '' || password === ''){
+            alert("log and pass err")
+            return
+        }
+        const newUser: IUser = {login, password, id: uuidv4()}
+        logining(newUser)
+        history.push('/')
+    }
+
+    return(
+        <div className="login-form">
+            <form onSubmit={signIn}>                    
+                    <input value={login} onChange={(e) => setLogin(e.target.value)}
+                    type="text" placeholder="Enter login" /><br />
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
+                    <input type="submit" value="LogIn"/>
+                </form>                   
         </div>
     )
 })
 
-export default SignInPage;
+export default LoginPage

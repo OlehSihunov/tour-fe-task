@@ -1,4 +1,4 @@
-import {action,observable} from 'mobx';
+
 import ToursStore from './toursStore';
 import LoginStore from './loginStore';
 

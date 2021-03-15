@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import {BrowserRouter,Route,Switch,Link} from 'react-router-dom';
 import { observer } from 'mobx-react';
@@ -6,10 +6,15 @@ import Tours from './components/tours/tours';
 import Login from './components/login/login';
 import Cart from './components/cart/cart';
 import Tour from './components/tour/tour';
-import rootStore from './stores/rootStore'
 
+import rootStore from './stores/rootStore';
 
-  function App () {
+function App() {
+  const {getTours} = rootStore.toursStore
+  useEffect(()=>{
+    getTours()
+  })
+
   return (
     <div className="App">
       <BrowserRouter>
