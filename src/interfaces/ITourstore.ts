@@ -1,4 +1,4 @@
-import ITour from './itour';
+import ITour from './ITour';
 
 interface ITourStore extends ITour {
   personCount: number

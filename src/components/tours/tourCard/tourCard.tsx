@@ -1,7 +1,7 @@
 import {useMemo} from 'react';
 import './tourCard.scss';
 import {Link} from 'react-router-dom';
-import ITour from '../../../interfaces/itour';
+import ITour from '../../../interfaces/ITour';
 import rootStore from '../../../stores/rootStore';
 import { observer } from 'mobx-react';
 import ITourStore from '../../../interfaces/ITourstore';
@@ -37,7 +37,7 @@ const TourCard = observer(({tour: {id, title, imageUrl, description, price}}: {t
       <p className="tour-card__description">{description}</p>
       <div className="tour-card__footer">
         <button className={`tour-card__addBtn${isSelected ? 'Selected' : ''}`}
-          onClick={onAdd}> + </button>
+          onClick={onAdd}> +</button>
         <p className="tour-card__price">{price}</p>
       </div>
     </Link>
