@@ -8,7 +8,7 @@ export default class LoginState {
 
     @observable user :IUser = JSON.parse(localStorage.getItem('user') || '{}')
     @observable users :IUser[] = JSON.parse(localStorage.getItem('users') || '[]')
-    @observable isLogged :boolean = false
+    @observable isLogged :boolean  = !!JSON.parse(localStorage.getItem('user')||'{}').login
 
     @action addNewUser = (newUser: IUser) => {
         const l = this.users.find(l => l.login === newUser.login)
@@ -34,6 +34,7 @@ export default class LoginState {
         } else {
             alert("Wrong Login or Password")
         }
+        this.isLogged = true
     }
     @action getCurrentUserLogin = () => this.user.login
     

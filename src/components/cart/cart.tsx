@@ -10,8 +10,9 @@ import CartOrder from './cartorder';
 const Cart = observer(() => {
   const [showModal, setState] = useState(false);
   const { selectedTours, checkoutTours } = rootStore.cartStore;
-  const toggleModal = () =>
+  const toggleModal = () =>{
     setState(!showModal);
+  }
   const onCheckout = () => {
     checkoutTours();
   }

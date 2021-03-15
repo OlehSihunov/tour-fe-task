@@ -4,7 +4,6 @@ import rootStore from '../../stores/rootStore'
 import TourCard from './tourCard/tourCard'
 import './tours.scss'
 import ITour from '../../interfaces/ITour'
-import Cart from '../cart/cart';
 
 const Tours = observer(() => {
     const {tours} = rootStore.toursStore
@@ -51,7 +50,6 @@ const Tours = observer(() => {
         {getPage(page,size,sort,minPrice,maxPrice).map(tour =>{
             return <TourCard key = {tour.id} tour = {tour}></TourCard>
         })}
-        <Cart/>
         <p>{generatePagination().map(el => {
             return <span key = {el} className = {`tours__page-number ${el===page?'tours__page-number_active' : ''}`} onClick = {()=>setPage(el)}>{el}</span>
         })}</p>
