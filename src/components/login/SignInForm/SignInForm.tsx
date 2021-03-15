@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { observer } from 'mobx-react';
 import { useHistory } from "react-router-dom";
 import IUser from '../../../interfaces/IUser';
-import rootStore from '../../../stores/rootStore';
 import { v4 as uuidv4 } from 'uuid';
 
 interface  ILoginPageProps{
@@ -10,7 +9,6 @@ interface  ILoginPageProps{
     signOut: () => void
 }
 const SignInForm = observer(({signIn, signOut}:ILoginPageProps) => {    
-    const {isLogged} = rootStore.loginStore
     const [login, setLogin] =useState('');
     const [password, setPassword] =useState('');
     const history = useHistory();

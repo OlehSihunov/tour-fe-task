@@ -8,9 +8,15 @@ import ITourStore from '../../../interfaces/ITourstore';
 
 const TourCard = observer(({tour: {id, title, imageUrl, description, price}}: {tour: ITour}) => {
   const {addNewTour, selectedTours} = rootStore.cartStore;
+  const {isLogged} = rootStore.loginStore;
   const isSelected = !!selectedTours.find(tour => tour.id === id)
   const onAdd = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
+    if(!isLogged){
+      console.log(isLogged)
+      alert("You need to log in first")
+      return;
+    }
     if (isSelected) {
       addNewTour([...selectedTours].filter(tour => tour.id !== id));
     } else {
