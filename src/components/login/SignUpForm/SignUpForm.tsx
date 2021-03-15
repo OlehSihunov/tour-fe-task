@@ -26,11 +26,11 @@ const SignUpForm = observer(({addNewUser: IUser}:ISignUpPageProps) => {
     }
   
     return (
-        <div className="signup-form">
+        <div className="form signup-form">
              <form onSubmit={signUp} className="login-form">
-                 <input value={login} onChange={(e)=>setLogin(e.target.value)} type="text" placeholder="Enter login" /><br />
-                 <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
-                 <input type="submit" value="SignIn"/>                 
+                 <input className="input" value={login} onChange={(e)=>setLogin(e.target.value)} type="text" placeholder="Enter login" /><br />
+                 <input className="input" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
+                 <input className="submit-btn" type="submit" value="SignIn"/>                 
              </form>
 
         </div>
