@@ -1,5 +1,5 @@
 import {action,makeObservable,observable} from 'mobx';
-import ITour from '../interfaces/ITour';
+import ITour from '../interfaces/itour';
 
 
 
