@@ -6,7 +6,6 @@ const Wrapper = () => {
     const {getTours} = rootStore.toursStore
     useEffect(()=>{
       getTours()
-      console.log('upd')
     })
     return (
        <App/>
