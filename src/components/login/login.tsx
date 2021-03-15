@@ -7,10 +7,10 @@ import SignInPage from './SignInPage/SignInPage';
 import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
 
 const SignIn = observer(() => {
-    const { addNewUser, logining } = rootStore.loginStore
+    const { addNewUser, logining, logouting} = rootStore.loginStore
     return (
        <div className="login-wrapper">
-           <SignInPage logining={logining}/>
+           <SignInPage logining={logining} logouting={logouting}/>
            <SignUpPage addNewUser={addNewUser}/>           
        </div>
     )

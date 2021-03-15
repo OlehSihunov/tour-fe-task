@@ -7,31 +7,37 @@ import { v4 as uuidv4 } from 'uuid';
 
 interface  ILoginPageProps{
     logining:  (newUser: IUser) => void
+    logouting: () => void
 }
-
-const LoginPage = observer(({logining}:ILoginPageProps) => {    
+const LoginPage = observer(({logining, logouting}:ILoginPageProps) => {    
+    const {isLogged, isUserLogged} = rootStore.loginStore
     const [login, setLogin] =useState('');
     const [password, setPassword] =useState('');
     const history = useHistory();
-    const isLogged = false;
     const signIn = () => {
         if(login === '' || password === ''){
             alert("log and pass err")
             return
         }
         const newUser: IUser = {login, password, id: uuidv4()}
-        logining(newUser)
-        history.push('/')
+        isUserLogged(newUser)
+        if(isLogged){
+            logining(newUser)
+            history.push('/')
+        }
     }
 
     return(
         <div className="login-form">
-            <form onSubmit={signIn}>                    
+            {isLogged
+             ?<form onSubmit={()=>signIn()}>                    
                     <input value={login} onChange={(e) => setLogin(e.target.value)}
                     type="text" placeholder="Enter login" /><br />
                     <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
                     <input type="submit" value="LogIn"/>
-                </form>                   
+                </form>      
+            : <button onClick={()=>logouting()}>LogOut</button>
+            }                         
         </div>
     )
 })
