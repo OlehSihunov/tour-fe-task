@@ -21,7 +21,7 @@ const Cart = observer(() => {
 
   return (
     <div className="cart">
-      <div className="modalComponent" >
+      <div className="modal-component" >
         <button onClick={toggleModal} disabled={!selectedTours.length}>
           {selectedTours.length ? <AddShoppingCartIcon /> : <ShoppingCartIcon />}
         </button>

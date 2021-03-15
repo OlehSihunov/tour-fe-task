@@ -1,0 +1,38 @@
+.tour {
+    padding: 20px  50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    &__img {
+       min-width: 600px;
+       img {
+           width: 100%;
+           height: auto;
+           border-radius: 5px;
+       }
+    }
+    &__info{
+        min-width: 400px;
+        display: flex;
+        flex-direction: column;
+        padding-left: 25px;
+        &__title {
+            font-weight: bold;
+            font-size: 36px;
+        }
+        &__description {
+            text-align: left;
+            font-size: 18px;
+        }
+        &__price {
+            font-weight: 600;
+            font-size: 24px;
+        }
+    }
+
+}
+@media screen and (max-width:1200px){
+    .tour{
+        flex-wrap: wrap;
+    }
+}

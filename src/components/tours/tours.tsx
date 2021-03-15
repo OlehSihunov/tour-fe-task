@@ -35,15 +35,15 @@ const Tours = observer(() => {
     return (
         <div className='tours'>
             <h1>Tours</h1>  
-            <div className ='sort'>
+            <div className ='tours__sort'>
                 <select onChange ={(e)=>setFilter(e.target.value)}>
-                    <option value ='ASC' >ASC</option>
-                    <option value = 'DESC'>DESC</option>
+                    <option value ='ASC' >From cheap to expencive</option>
+                    <option value = 'DESC'>From expencive to cheap</option>
                 </select>
                 <form>
-                    <label>Min price</label>
+                    <label>Min price:</label>
                     <input value = {minPrice} onChange = {e=>setMinPrice(parseInt(e.target.value)||0)}></input>
-                    <label>Max price</label>
+                    <label>Max price:</label>
                     <input value = {maxPrice} onChange = {e=>setMaxPrice(parseInt(e.target.value)||0)}></input>
                 </form>
             </div>
