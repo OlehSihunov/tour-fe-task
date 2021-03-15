@@ -2,7 +2,6 @@ import './App.scss';
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import Tours from './components/tours/tours';
 import Login from './components/login/login';
-import Cart from './components/cart/cart';
 import Tour from './components/tour/tour';
 import { v4 as uuidv4 } from 'uuid';
 uuidv4()
@@ -19,10 +18,7 @@ function App() {
           <Route  path = '/login'>
             <Login/>
           </Route>
-          <Route  path = '/cart'>
-            <Cart/>
-          </Route>
-          <Route  path = {`/tour/:id`}>
+          <Route  path = '/tour/:id'>
            <Tour/>
           </Route>
         </Switch>

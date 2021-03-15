@@ -4,6 +4,7 @@ import rootStore from '../../stores/rootStore'
 import TourCard from './tourCard/tourCard'
 import './tours.scss'
 import ITour from '../../interfaces/ITour'
+import Cart from '../cart/cart';
 
 const Tours = observer(() => {
     const {tours} = rootStore.toursStore
@@ -14,7 +15,7 @@ const Tours = observer(() => {
     const [minPrice,setMinPrice] = useState (0)
     let awailableTours :number =tours.length ;
     function generatePagination() {
-        console.log(awailableTours)
+      
         const numberOfPages = awailableTours/size
         const links = []
         for(let i = 1; i <=numberOfPages;i++){
@@ -23,7 +24,6 @@ const Tours = observer(() => {
         return links
     }
     function getPage(page :number,size :number,sort: string, minPrice :number, maxPrice :number) {
-        console.log(minPrice)
         const pageTours = tours.slice();
         if(sort === 'ASC')
           pageTours.sort((a:ITour,b:ITour) => parseInt(a.price)-parseInt(b.price) )
@@ -35,7 +35,6 @@ const Tours = observer(() => {
       }
     return (
         <div className='tours'>
-            {console.log('render')}
             <h1>Tours</h1>  
             <div className ='sort'>
                 <select onChange ={(e)=>setFilter(e.target.value)}>
@@ -49,13 +48,14 @@ const Tours = observer(() => {
                     <input value = {maxPrice} onChange = {e=>setMaxPrice(parseInt(e.target.value)||0)}></input>
                 </form>
             </div>
-            {getPage(page,size,sort,minPrice,maxPrice).map(tour =>{
-                return <TourCard key = {tour.id} tour = {tour}></TourCard>
-            })}
-            <p>{generatePagination().map(el => {
-                return <span key = {el} className = {`tours__page-number ${el===page?'tours__page-number_active' : ''}`} onClick = {()=>setPage(el)}>{el}</span>
-            })}</p>
-        </div>
+        {getPage(page,size,sort,minPrice,maxPrice).map(tour =>{
+            return <TourCard key = {tour.id} tour = {tour}></TourCard>
+        })}
+        <Cart/>
+        <p>{generatePagination().map(el => {
+            return <span key = {el} className = {`tours__page-number ${el===page?'tours__page-number_active' : ''}`} onClick = {()=>setPage(el)}>{el}</span>
+        })}</p>
+     </div>
     )
 })
 
