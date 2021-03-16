@@ -1,10 +1,10 @@
-import './cart.scss';
-import rootStore from '../../stores/rootStore';
+import './cartOrderItem.scss';
+import rootStore from '../../../stores/rootStore';
 import { observer } from 'mobx-react';
-import ITourStore from '../../interfaces/ITourstore';
+import ITourStore from '../../../interfaces/ITourstore';
 
 
-const CartOrder = observer(({ tour: { id, title, imageUrl, price, personCount } }: { tour: ITourStore }) => {
+const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount } }: { tour: ITourStore }) => {
   const {removePerson, addPerson, removeTour} = rootStore.cartStore;
   const onRemoveTour = () => {
     removeTour(id);
@@ -28,12 +28,12 @@ const CartOrder = observer(({ tour: { id, title, imageUrl, price, personCount } 
         <button className="modal-in__container__counter__btn" onClick={onAddPerson}>+</button>
       </div>
       <div className="modal-in__container__res">
-        <button className="modal-in__container__res__btn" onClick={onRemoveTour}>Delete tour</button>
         <span className="modal-in__container__res__span">{endedPrice}$</span>
+        <button className="modal-in__container__res__btn" onClick={onRemoveTour}>Delete tour</button>
       </div>
-    </li>
+    </div>
   );
 }
 );
 
-export default CartOrder;
+export default CartOrderItem;

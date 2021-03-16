@@ -34,30 +34,31 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 30px;
     margin-top: 0;
     font-size: 22px;
     padding: 2px;
-  }
-  &__addBtn {
-    display: flex;
-    border: none;
-    box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.6);
-    margin: 5px;
-    font-size: normal;
-    &Selected {
+    padding-top: 10px;
+    &__add-btn {
       display: flex;
       border: none;
       box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.6);
       margin: 5px;
+      padding: 5px 10px ;
+      font-size: 16px;
       font-size: normal;
-      color: red;
+      &_selected {
+        box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.6);
+        margin: 5px;
+        color: dimgrey;
+      }
+    }
+    &__price {
+      display: flex;
+      text-align: right;
+      font-weight: bold;
+      margin: 0px;
     }
   }
-  &__price {
-    display: flex;
-    text-align: right;
-    font-weight: bold;
-  }
+  
 }
   

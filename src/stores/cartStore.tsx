@@ -1,4 +1,5 @@
 import {action, makeObservable, observable} from 'mobx';
+import ITour from '../interfaces/ITour';
 import ITourStore from '../interfaces/ITourstore';
 
 
@@ -27,6 +28,9 @@ export default class CartStore {
   }
   @action addNewTour = (selectedTours: ITourStore[]) => {
     this.selectedTours = selectedTours;
+  }
+  @action addNewTour2 = (newTour:ITour|undefined) => {
+    if(newTour)this.selectedTours = [...this.selectedTours,{...newTour,personCount:1}]
   }
   @action removeTour = (id: number) => {
     this.selectedTours = this.selectedTours.filter(el => el.id !== id);

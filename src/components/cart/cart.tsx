@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 import ITourStore from '../../interfaces/ITourstore';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import CartOrder from './cartorder';
+import CartOrderItem from './cartOrderItem/cartOrderItem';
 
 const Cart = observer(() => {
   const [showModal, setState] = useState(false);
@@ -15,12 +15,13 @@ const Cart = observer(() => {
   }
   const onCheckout = () => {
     checkoutTours();
+    toggleModal();
   }
   const sumPay = selectedTours.reduce((acc, {price}) => acc + parseInt(price.replace(/[^\d]/g, '')), 0);
 
   return (
     <div className="cart">
-      <div className="modalComponent" >
+      <div className="modal-component" >
         <button onClick={toggleModal} disabled={!selectedTours.length}>
           {selectedTours.length ? <AddShoppingCartIcon /> : <ShoppingCartIcon />}
         </button>
@@ -34,7 +35,7 @@ const Cart = observer(() => {
               <button onClick={toggleModal}>X</button>
             </header>
             <ol className="modal__modal-in__list">
-              {selectedTours.map((tour: ITourStore, key: number) => <CartOrder key={key} tour={tour} />)}
+              {selectedTours.map((tour: ITourStore, key: number) => <CartOrderItem key={key} tour={tour} />)}
             </ol>
             <div className="modal__modal-in__footer">
               <span className="modal__modal-in__footer__span">{sumPay}$</span>
