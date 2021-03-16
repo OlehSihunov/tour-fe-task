@@ -14,15 +14,22 @@ const SignUpForm = observer(({addNewUser: IUser}:ISignUpPageProps) => {
 
     const [login, setLogin] =useState('');
     const [password, setPassword] =useState('');
+    const [passwordRepeat, setPasswordRepeat] =useState('');
     const history = useHistory();
     const {addNewUser} = rootStore.loginStore 
     
-    const signUp = () => {  
-        const newUser: IUser = {login, password, id: uuidv4()}
-        setLogin('')
-        setPassword('')
-        addNewUser(newUser)
-        history.push('/')
+    const signUp = () => { 
+        if(login!==''&&password!==''&&password===passwordRepeat) {
+            const newUser: IUser = {login, password, id: uuidv4()}
+            setLogin('')
+            setPassword('')
+            addNewUser(newUser)
+            history.push('/')
+        }
+        else {
+            alert("Empty fields need to be filled")
+        }
+        
     }
   
     return (
@@ -30,6 +37,7 @@ const SignUpForm = observer(({addNewUser: IUser}:ISignUpPageProps) => {
              <form onSubmit={signUp} className="login-form">
                  <input className="input" value={login} onChange={(e)=>setLogin(e.target.value)} type="text" placeholder="Enter login" /><br />
                  <input className="input" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
+                 <input className="input" value={passwordRepeat} onChange={(e)=>setPasswordRepeat(e.target.value)} type="password" placeholder="Repeat password" /><br />  
                  <input className="submit-btn" type="submit" value="SignIn"/>                 
              </form>
 
