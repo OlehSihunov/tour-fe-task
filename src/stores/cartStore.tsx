@@ -12,7 +12,6 @@ export default class CartStore {
     this.selectedTours= [];
     alert('Congratulations! Your order is accepted, please wait for our call.');
     this.saveTours();
-    window.location.reload();
   }
   @action addPerson = (id: number) => {
     this.selectedTours.map(el => {

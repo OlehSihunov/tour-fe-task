@@ -23,6 +23,7 @@ export default class LoginState {
     }
     @action signOut = () => {
         this.user = JSON.parse('{}')
+        localStorage.setItem('selectedTours', '[]');
         this.isLogged = false
         this.updateUsers()
     }
