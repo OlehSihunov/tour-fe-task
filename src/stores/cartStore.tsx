@@ -14,16 +14,16 @@ export default class CartStore {
     this.saveTours();
     window.location.reload();
   }
-  @action addPerson = (id: number) => {
+  @action addPerson = (id: number, userId: string) => {
     this.selectedTours.map(el => {
-      if (el.id === id) el.personCount++;
+      if (el.id === id && el.userId === userId) el.personCount++;
         return el;
       });
     this.saveTours();
   }
-  @action removePerson = (id: number) => {
+  @action removePerson = (id: number, userId: string) => {
     this.selectedTours.map(el => {
-      if (el.id === id) el.personCount--;
+      if (el.id === id && el.userId === userId) el.personCount--;
         return el;
       });
     this.saveTours();

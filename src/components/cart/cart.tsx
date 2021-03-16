@@ -19,7 +19,7 @@ const Cart = observer(() => {
     toggleModal();
   }
   const filteredTours = selectedTours.filter(el => el.userId === user.id);
-  const sumPay = filteredTours.reduce((acc, {price,personCount}) => acc + parseInt(price.replace(/[^\d]/g, ''))*personCount, 0);
+  const sumPay = filteredTours.reduce((acc, {price, personCount}) => acc + parseInt(price.replace(/[^\d]/g, ''))*personCount, 0);
 
   return (
     <div className="cart">
