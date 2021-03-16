@@ -1,5 +1,5 @@
 import './cart.scss';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import rootStore from '../../stores/rootStore';
 import { observer } from 'mobx-react';
 import ITourStore from '../../interfaces/ITourstore';
@@ -17,7 +17,7 @@ const Cart = observer(() => {
     checkoutTours();
     toggleModal();
   }
-  const sumPay = selectedTours.reduce((acc, {price}) => acc + parseInt(price.replace(/[^\d]/g, '')), 0);
+  const sumPay = selectedTours.reduce((acc, {price,personCount}) => acc + parseInt(price.replace(/[^\d]/g, ''))*personCount, 0);
 
   return (
     <div className="cart">
