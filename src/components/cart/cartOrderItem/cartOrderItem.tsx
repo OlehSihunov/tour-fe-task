@@ -4,16 +4,17 @@ import { observer } from 'mobx-react';
 import ITourStore from '../../../interfaces/ITourstore';
 
 
-const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount } }: { tour: ITourStore }) => {
+const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount, userId } }: { tour: ITourStore }) => {
   const {removePerson, addPerson, removeTour} = rootStore.cartStore;
+  const {user} = rootStore.loginStore;
   const onRemoveTour = () => {
     removeTour(id);
   }
   const onAddPerson = () => {
-    addPerson(id);
+    addPerson(id, userId);
   };
   const onRemovePerson = () => {
-    removePerson(id);
+    removePerson(id, userId);
   };
   const varPrice = parseInt(price.replace(/[^\d]/g, ''));
   const endedPrice = personCount * varPrice;

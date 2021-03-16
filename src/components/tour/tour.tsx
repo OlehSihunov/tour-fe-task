@@ -9,6 +9,7 @@ interface IURLParams {
 }
 
 const Tour = () => {
+    const {user} = rootStore.loginStore;
     const {getTourById} = rootStore.toursStore
     const {addNewTour, selectedTours} = rootStore.cartStore;
     const params :IURLParams = useParams()
@@ -16,7 +17,7 @@ const Tour = () => {
     const [isSelected,setSelected ]= useState(!!selectedTours.find(etour => etour.id === tour?.id) )
     const onAdd = (e: React.MouseEvent<HTMLElement>) => {
         if (!isSelected) {
-            addNewTour(tour)
+            addNewTour(tour, user.id)
             setSelected(!isSelected)
         } 
       };
