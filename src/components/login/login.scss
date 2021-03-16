@@ -7,22 +7,28 @@
     .form{
         &:hover{
             transition: 500ms;
-            background-color: #cc3355;
+            background-color: #444444;
         }
-        background-color: #E25775;
+        background-color: #333333;
         margin: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 300px;
         height: 350px;
+        &__title {
+            color: #B3D929;
+            font-size: 26px;
+            font-weight: 700;
+
+        }
     }
     .input{
         background-color: transparent;
         color: #fff;
         margin: 15px 0;
         border: none;
-        border-bottom: 2px solid #890421;
+        border-bottom: 2px solid #B3D929;
         width: 150px;
         &::placeholder{
             color: #fff;
@@ -31,22 +37,24 @@
             background-color: transparent;            
             box-shadow:none;
             outline-style: none;
-            border-bottom: 2px solid #890421;
+            border-bottom: 2px solid #B3D929;
         }
     }
     .submit-btn{
         &:hover{
-            background-color: #AC1737;
+            background-color: #B3D929;
         }
         &:focus{
             border: none;
             outline: none
         }
-        background-color: #890421;
+        background-color: #B3D929;
         margin: 10px 0;
-        color: #fff;
+        color: #333;
         border: none;
         width: 70px;
         height: 40px;
+        font-size: 14px;
+        font-weight: 600;
     }
 }

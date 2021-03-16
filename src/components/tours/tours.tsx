@@ -44,7 +44,7 @@ const Tours = observer(() => {
                     <label>Min price:</label>
                     <input value = {minPrice} onChange = {e=>setMinPrice(parseInt(e.target.value)||0)}></input>
                     <label>Max price:</label>
-                    <input value = {maxPrice} onChange = {e=>setMaxPrice(parseInt(e.target.value)||0)}></input>
+                    <input value = {maxPrice} placeholder ='max price' onChange = {e=>setMaxPrice(parseInt(e.target.value)||0)}></input>
                 </form>
             </div>
         {getPage(page,size,sort,minPrice,maxPrice).map(tour =>{
