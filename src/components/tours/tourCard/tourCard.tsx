@@ -10,12 +10,12 @@ interface ITourCardProps {
 }
 
 const TourCard = observer(({tour}:ITourCardProps) => {
-  const {addNewTour2, selectedTours} = rootStore.cartStore;
+  const {addNewTour, selectedTours} = rootStore.cartStore;
   const [isSelected,setSelected ]= useState(!!selectedTours.find(etour => etour.id === tour?.id) )
   const onAdd = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
       if (!isSelected) {
-          addNewTour2(tour)
+          addNewTour(tour)
           setSelected(!isSelected)
       } 
     };
