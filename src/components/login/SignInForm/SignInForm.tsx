@@ -6,7 +6,7 @@ import IUser from '../../../interfaces/IUser';
 import { v4 as uuidv4 } from 'uuid';
 
 interface  ILoginPageProps{
-    signIn:  (newUser: IUser) => void
+    signIn:  (newUser: IUser) => boolean
     isLogged: boolean;
 }
 const SignInForm = observer(({signIn, isLogged}:ILoginPageProps) => {    
@@ -19,8 +19,8 @@ const SignInForm = observer(({signIn, isLogged}:ILoginPageProps) => {
             return
         }
         const newUser: IUser = {login, password, id: uuidv4()}
-        signIn(newUser)
-        if(isLogged){
+       
+        if( signIn(newUser)){
             history.push('/')
         }
         else {

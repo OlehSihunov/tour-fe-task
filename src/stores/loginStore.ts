@@ -23,6 +23,7 @@ export default class LoginState {
     }
     @action signOut = () => {
         this.user = JSON.parse('{}')
+        localStorage.setItem('selectedTours', '[]');
         this.isLogged = false
         this.updateUsers()
     }
@@ -30,11 +31,13 @@ export default class LoginState {
         const checkUser = this.users.find(u => u.login === user.login && u.password === user.password)
         if (checkUser) {
             this.user = checkUser;
-            this.updateUsers()
+            this.updateUsers();
+            this.isLogged = true
+            return this.isLogged
         } else {
             alert("Wrong Login or Password")
+            return this.isLogged
         }
-        this.isLogged = true
     }
     @action getCurrentUserLogin = () => this.user.login
     
