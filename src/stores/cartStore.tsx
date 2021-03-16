@@ -1,8 +1,8 @@
 import {action, makeObservable, observable} from 'mobx';
 import ITour from '../interfaces/ITour';
+import IUser from '../interfaces/IUser';
 import ITourStore from '../interfaces/ITourstore';
-
-
+import rootStore from './rootStore';
 export default class CartStore {
   constructor(){
     makeObservable(this)
@@ -12,6 +12,7 @@ export default class CartStore {
     this.selectedTours= [];
     alert('Congratulations! Your order is accepted, please wait for our call.');
     this.saveTours();
+    window.location.reload();
   }
   @action addPerson = (id: number) => {
     this.selectedTours.map(el => {
@@ -27,8 +28,8 @@ export default class CartStore {
       });
     this.saveTours();
   }
-  @action addNewTour = (newTour:ITour|undefined) => {
-    if(newTour)this.selectedTours = [...this.selectedTours,{...newTour,personCount:1}];
+  @action addNewTour = (newTour: ITour|undefined, userId: string) => {
+    if(newTour) this.selectedTours = [...this.selectedTours,{...newTour,personCount:1, userId}];
     this.saveTours();
   }
   @action removeTour = (id: number) => {

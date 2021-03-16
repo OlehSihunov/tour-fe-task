@@ -8,6 +8,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import CartOrderItem from './cartOrderItem/cartOrderItem';
 
 const Cart = observer(() => {
+  const {user} = rootStore.loginStore;
   const [showModal, setState] = useState(false);
   const { selectedTours, checkoutTours } = rootStore.cartStore;
   const toggleModal = () =>{
@@ -17,13 +18,14 @@ const Cart = observer(() => {
     checkoutTours();
     toggleModal();
   }
-  const sumPay = selectedTours.reduce((acc, {price,personCount}) => acc + parseInt(price.replace(/[^\d]/g, ''))*personCount, 0);
+  const filteredTours = selectedTours.filter(el => el.userId === user.id);
+  const sumPay = filteredTours.reduce((acc, {price,personCount}) => acc + parseInt(price.replace(/[^\d]/g, ''))*personCount, 0);
 
   return (
     <div className="cart">
       <div className="modal-component" >
         <button onClick={toggleModal} disabled={!selectedTours.length}>
-          {selectedTours.length ? <AddShoppingCartIcon /> : <ShoppingCartIcon />}
+          {filteredTours.length ? <AddShoppingCartIcon /> : <ShoppingCartIcon />}
         </button>
       </ div>
       {showModal && (
@@ -35,7 +37,7 @@ const Cart = observer(() => {
               <button onClick={toggleModal}>X</button>
             </header>
             <ol className="modal__modal-in__list">
-              {selectedTours.map((tour: ITourStore, key: number) => <CartOrderItem key={key} tour={tour} />)}
+              {filteredTours.map((tour: ITourStore, key: number) => <CartOrderItem key={key} tour={tour} />)}
             </ol>
             <div className="modal__modal-in__footer">
               <span className="modal__modal-in__footer__span">{sumPay}$</span>
