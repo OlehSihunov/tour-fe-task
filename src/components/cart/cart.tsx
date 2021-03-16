@@ -14,6 +14,11 @@ const Cart = observer(() => {
   const toggleModal = () =>{
     setState(!showModal);
   }
+  const closeModel = () => {
+    setState(!showModal);
+    window.location.reload()
+
+  }
   const onCheckout = () => {
     checkoutTours();
     toggleModal();
@@ -34,7 +39,7 @@ const Cart = observer(() => {
           <div className="modal__modal-in" >
             <header className="modal__modal-in__header">
               <span className="modal__modal-in__title">Cart</span>
-              <button onClick={toggleModal}>X</button>
+              <button onClick={closeModel}>X</button>
             </header>
             <ol className="modal__modal-in__list">
               {filteredTours.map((tour: ITourStore, key: number) => <CartOrderItem key={key} tour={tour} />)}
