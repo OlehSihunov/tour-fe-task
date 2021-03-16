@@ -5,36 +5,41 @@ import { observer } from 'mobx-react';
 import ITourStore from '../../interfaces/ITourstore';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import CartOrder from './cartorder';
+import CartOrderItem from './cartOrderItem/cartOrderItem';
 
 const Cart = observer(() => {
   const [showModal, setState] = useState(false);
   const { selectedTours, checkoutTours } = rootStore.cartStore;
-  const toggleModal = () =>
+  const toggleModal = () =>{
     setState(!showModal);
+  }
   const onCheckout = () => {
     checkoutTours();
+    toggleModal();
   }
+  const sumPay = selectedTours.reduce((acc, {price,personCount}) => acc + parseInt(price.replace(/[^\d]/g, ''))*personCount, 0);
 
   return (
     <div className="cart">
-      <div className="modalComponent" >
-        <button onClick={toggleModal}>
+      <div className="modal-component" >
+        <button onClick={toggleModal} disabled={!selectedTours.length}>
           {selectedTours.length ? <AddShoppingCartIcon /> : <ShoppingCartIcon />}
         </button>
       </ div>
       {showModal && (
         <div className="modal">
           <div className="modal__background" />
-          <div className="modal-in" >
-            <header>
-              <span className="modal-in__title">Cart</span>
+          <div className="modal__modal-in" >
+            <header className="modal__modal-in__header">
+              <span className="modal__modal-in__title">Cart</span>
               <button onClick={toggleModal}>X</button>
             </header>
-            {selectedTours.map((tour: ITourStore, key: number) => <CartOrder key={key} tour={tour} />)}
-            <div className="modal-in__footer">
-              <span className="modal-in__footer__span">endedPrice</span>
-              <button className="modal-in__footer__btn" onClick={onCheckout}>Buy now</button>
+            <ol className="modal__modal-in__list">
+              {selectedTours.map((tour: ITourStore, key: number) => <CartOrderItem key={key} tour={tour} />)}
+            </ol>
+            <div className="modal__modal-in__footer">
+              <span className="modal__modal-in__footer__span">{sumPay}$</span>
+              <button className="modal__modal-in__footer__btn" onClick={onCheckout} disabled={!selectedTours.length}>Buy now</button>
             </div>
           </div>
         </div>

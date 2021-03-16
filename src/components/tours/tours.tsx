@@ -4,7 +4,6 @@ import rootStore from '../../stores/rootStore'
 import TourCard from './tourCard/tourCard'
 import './tours.scss'
 import ITour from '../../interfaces/ITour'
-import Cart from '../cart/cart';
 
 const Tours = observer(() => {
     const {tours} = rootStore.toursStore
@@ -36,22 +35,21 @@ const Tours = observer(() => {
     return (
         <div className='tours'>
             <h1>Tours</h1>  
-            <div className ='sort'>
+            <div className ='tours__sort'>
                 <select onChange ={(e)=>setFilter(e.target.value)}>
-                    <option value ='ASC' >ASC</option>
-                    <option value = 'DESC'>DESC</option>
+                    <option value ='ASC' >From cheap to expencive</option>
+                    <option value = 'DESC'>From expencive to cheap</option>
                 </select>
                 <form>
-                    <label>Min price</label>
+                    <label>Min price:</label>
                     <input value = {minPrice} onChange = {e=>setMinPrice(parseInt(e.target.value)||0)}></input>
-                    <label>Max price</label>
-                    <input value = {maxPrice} onChange = {e=>setMaxPrice(parseInt(e.target.value)||0)}></input>
+                    <label>Max price:</label>
+                    <input value = {maxPrice} placeholder ='max price' onChange = {e=>setMaxPrice(parseInt(e.target.value)||0)}></input>
                 </form>
             </div>
         {getPage(page,size,sort,minPrice,maxPrice).map(tour =>{
             return <TourCard key = {tour.id} tour = {tour}></TourCard>
         })}
-        <Cart/>
         <p>{generatePagination().map(el => {
             return <span key = {el} className = {`tours__page-number ${el===page?'tours__page-number_active' : ''}`} onClick = {()=>setPage(el)}>{el}</span>
         })}</p>

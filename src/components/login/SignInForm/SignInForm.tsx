@@ -3,15 +3,13 @@ import { observer } from 'mobx-react';
 import { useHistory } from "react-router-dom";
 import './SignInForm.scss';
 import IUser from '../../../interfaces/IUser';
-import rootStore from '../../../stores/rootStore';
 import { v4 as uuidv4 } from 'uuid';
 
 interface  ILoginPageProps{
     signIn:  (newUser: IUser) => void
-    signOut: () => void
+    isLogged: boolean;
 }
-const SignInForm = observer(({signIn, signOut}:ILoginPageProps) => {    
-    const {isLogged} = rootStore.loginStore
+const SignInForm = observer(({signIn, isLogged}:ILoginPageProps) => {    
     const [login, setLogin] =useState('');
     const [password, setPassword] =useState('');
     const history = useHistory();
@@ -22,16 +20,22 @@ const SignInForm = observer(({signIn, signOut}:ILoginPageProps) => {
         }
         const newUser: IUser = {login, password, id: uuidv4()}
         signIn(newUser)
-        history.push('/')
+        if(isLogged){
+            history.push('/')
+        }
+        else {
+            alert('Wrong login or pass')
+        }
     }
 
     return(
         <div className="form login-form">
-            <form onSubmit={handleSignIn}>                    
+            <form onSubmit={handleSignIn}> 
+                    <p className = "form__title">Sign In</p>                   
                     <input className="input" value={login} onChange={(e) => setLogin(e.target.value)}
                     type="text" placeholder="Enter login" /><br />
                     <input className="input" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
-                    <input className="submit-btn" type="submit" value="LogIn"/>
+                    <input className="submit-btn" type="submit" value="Sign In"/>
                 </form> 
         </div>
     )

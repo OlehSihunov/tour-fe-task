@@ -3,21 +3,17 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
-    background-color: #4c59d8;
-    >span {
-        &:hover{
-            background:#1827B0;
-            color: #fff;
-        }
-        background: #eee;
+    background-color: #333333;
+    >span, a>span {
+        background: #B3D929;
         display: flex;
         flex-direction: row;
-        line-height: 56px;
+        align-items: center;
         padding: 5px 25px;
         margin: 0 50px;
         width: fit-content;
        
-        color: #000;
+        color:#333333;
     }
     a {
         &:hover{

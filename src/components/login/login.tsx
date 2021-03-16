@@ -6,10 +6,10 @@ import SignUpForm from './SignUpForm/SignUpForm';
 import SignInForm from './SignInForm/SignInForm';
 
 const LoginPage = observer(() => {
-    const { addNewUser, signIn, signOut} = rootStore.loginStore
+    const { addNewUser, signIn, isLogged} = rootStore.loginStore
     return (
        <div className="login-wrapper">
-           <SignInForm signIn={signIn} signOut={signOut}/> 
+           <SignInForm signIn={signIn} isLogged={isLogged}/> 
            <SignUpForm addNewUser={addNewUser}/>           
        </div>
     )
