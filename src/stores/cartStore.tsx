@@ -1,15 +1,13 @@
 import {action, makeObservable, observable} from 'mobx';
 import ITour from '../interfaces/ITour';
-import IUser from '../interfaces/IUser';
 import ITourStore from '../interfaces/ITourstore';
-import rootStore from './rootStore';
 export default class CartStore {
   constructor(){
     makeObservable(this)
   }
   @observable selectedTours: ITourStore[] = JSON.parse(localStorage.getItem('selectedTours') || '[]');
-  @action checkoutTours = () => {
-    this.selectedTours= [];
+  @action checkoutTours = (userId: string) => {
+    this.selectedTours= this.selectedTours.filter(el => el.userId !== userId);
     alert('Congratulations! Your order is accepted, please wait for our call.');
     this.saveTours();
     window.location.reload();
@@ -32,8 +30,8 @@ export default class CartStore {
     if(newTour) this.selectedTours = [...this.selectedTours,{...newTour,personCount:1, userId}];
     this.saveTours();
   }
-  @action removeTour = (id: number) => {
-    this.selectedTours = this.selectedTours.filter(el => el.id !== id);
+  @action removeTour = (id: number, userId: string) => {
+    this.selectedTours = [...this.selectedTours.filter(el =>el.userId !== userId),...this.selectedTours.filter(el => el.userId === userId && el.id !== id )];
     this.saveTours();
   }
   saveTours() {

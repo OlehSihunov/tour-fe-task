@@ -20,7 +20,7 @@ const Cart = observer(() => {
 
   }
   const onCheckout = () => {
-    checkoutTours();
+    checkoutTours(user.id);
     toggleModal();
   }
   const filteredTours = selectedTours.filter(el => el.userId === user.id);
