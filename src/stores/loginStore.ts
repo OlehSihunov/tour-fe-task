@@ -15,9 +15,23 @@ export default class LoginState {
         if (l) {
             alert("This Login cannot be created")
         } else {
-            this.users.push(newUser)
+            fetch('http://localhost:8765/api/users/signup', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id: `${newUser.id}`,
+                    login: `${newUser.login}`,
+                    password: `${newUser.password}`,
+                    balance: 2000
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+            // this.users.push(newUser)
             this.user = newUser
-            this.updateUsers()
+            //this.updateUsers()
             this.isLogged = true;
         }
     }
@@ -30,8 +44,20 @@ export default class LoginState {
     @action signIn = (user: IUser) => {
         const checkUser = this.users.find(u => u.login === user.login && u.password === user.password)
         if (checkUser) {
-            this.user = checkUser;
-            this.updateUsers();
+            fetch('http://localhost:8765/api/users/signin', {
+                method: 'POST',
+                body: JSON.stringify({
+                    login: `${user.login}`,
+                    password: `${user.password}`
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+            // this.user = checkUser;
+            // this.updateUsers();
             this.isLogged = true
             return this.isLogged
         } else {
