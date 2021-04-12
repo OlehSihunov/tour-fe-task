@@ -1,7 +1,8 @@
 import ITour from './ITour';
 
 interface ITourStore extends ITour {
-  personCount: number
+  personCount: number,
+  userId: string
 }
 
 export default ITourStore;

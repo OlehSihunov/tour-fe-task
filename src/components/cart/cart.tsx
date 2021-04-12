@@ -8,42 +8,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import CartOrderItem from './cartOrderItem/cartOrderItem';
 
 const Cart = observer(() => {
-<<<<<<< Updated upstream
-  const [showModal, setState] = useState(false);
-  const { selectedTours, checkoutTours } = rootStore.cartStore;
-  const toggleModal = () =>{
-    setState(!showModal);
-  }
-  const onCheckout = () => {
-    checkoutTours();
-    toggleModal();
-  }
-  const sumPay = selectedTours.reduce((acc, {price,personCount}) => acc + parseInt(price.replace(/[^\d]/g, ''))*personCount, 0);
 
-  return (
-    <div className="cart">
-      <div className="modal-component" >
-        <button onClick={toggleModal} disabled={!selectedTours.length}>
-          {selectedTours.length ? <AddShoppingCartIcon /> : <ShoppingCartIcon />}
-        </button>
-      </ div>
-      {showModal && (
-        <div className="modal">
-          <div className="modal__background" />
-          <div className="modal__modal-in" >
-            <header className="modal__modal-in__header">
-              <span className="modal__modal-in__title">Cart</span>
-              <button onClick={toggleModal}>X</button>
-            </header>
-            <ol className="modal__modal-in__list">
-              {selectedTours.map((tour: ITourStore, key: number) => <CartOrderItem key={key} tour={tour} />)}
-            </ol>
-            <div className="modal__modal-in__footer">
-              <span className="modal__modal-in__footer__span">{sumPay}$</span>
-              <button className="modal__modal-in__footer__btn" onClick={onCheckout} disabled={!selectedTours.length}>Buy now</button>
-            </div>
-          </div>
-=======
     const { user } = rootStore.loginStore;
     const [showModal, setState] = useState(false);
     const { selectedTours, checkoutTours, balanceLimit } = rootStore.cartStore;
@@ -96,7 +61,6 @@ const Cart = observer(() => {
                     </div>
                 </div>
             )}
->>>>>>> Stashed changes
         </div>
     );
 }

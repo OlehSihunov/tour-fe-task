@@ -5,7 +5,7 @@ import ITourStore from '../../../interfaces/ITourstore';
 
 <<<<<<< Updated upstream
 
-const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount } }: { tour: ITourStore }) => {
+const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount, userId } }: { tour: ITourStore }) => {
   const {removePerson, addPerson, removeTour} = rootStore.cartStore;
 =======
 const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount, userId } }: { tour: ITourStore },balance:{balance: number} ) => {
@@ -13,13 +13,13 @@ const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCoun
   const {removePerson, addPerson, removeTour, balanceLimit} = rootStore.cartStore;
 >>>>>>> Stashed changes
   const onRemoveTour = () => {
-    removeTour(id);
+    removeTour(id,userId);
   }
   const onAddPerson = () => {
-    addPerson(id);
+    addPerson(id, userId);
   };
   const onRemovePerson = () => {
-    removePerson(id);
+    removePerson(id, userId);
   };
   const varPrice = price;
   const endedPrice = personCount * varPrice;

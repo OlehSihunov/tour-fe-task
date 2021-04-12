@@ -25,7 +25,7 @@ function App() {
             <Login/>
           </Route>
           <Route  path = '/tour/:id'>
-           <Tour/>
+          {isLogged?<Tour/>:<Redirect push to ='/login'/>}
           </Route>
         </Switch>
       </BrowserRouter>
