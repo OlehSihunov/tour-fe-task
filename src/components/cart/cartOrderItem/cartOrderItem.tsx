@@ -3,9 +3,9 @@ import rootStore from '../../../stores/rootStore';
 import { observer } from 'mobx-react';
 import ITourStore from '../../../interfaces/ITourstore';
 
-
-const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount, userId } }: { tour: ITourStore }) => {
-  const {removePerson, addPerson, removeTour} = rootStore.cartStore;
+const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount, userId } }: { tour: ITourStore },balance:{balance: number} ) => {
+  console.log("work props " + balance)
+  const {removePerson, addPerson, removeTour, balanceLimit} = rootStore.cartStore;
   const onRemoveTour = () => {
     removeTour(id,userId);
   }
@@ -15,9 +15,8 @@ const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCoun
   const onRemovePerson = () => {
     removePerson(id, userId);
   };
-  const varPrice =price;
+  const varPrice = price;
   const endedPrice = personCount * varPrice;
-
   return (
     <div className="modal-in__container">
       <img src={imageUrl} className="modal-in__container__img" alt = 'cartholder img'/>

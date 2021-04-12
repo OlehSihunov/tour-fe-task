@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { observer } from 'mobx-react-lite';
 import rootStore from '../../../stores/rootStore';
 import './SignUpForm.scss';
@@ -7,17 +7,16 @@ import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 
 interface  ISignUpPageProps{
-    addNewUser:  (newUser: IUser) => void
+    addNewUser:  (newUser: IUser) => void,
+    isLogged: boolean
 }
 
-const SignUpForm = observer(({addNewUser: IUser}:ISignUpPageProps) => {
+const SignUpForm = observer(({addNewUser,isLogged}:ISignUpPageProps) => {
 
     const [login, setLogin] =useState('');
     const [password, setPassword] =useState('');
     const [passwordRepeat, setPasswordRepeat] =useState('');
     const history = useHistory();
-    const {addNewUser} = rootStore.loginStore 
-    
     const signUp = () => { 
         if(login!==''&&password!==''&&password===passwordRepeat) {
             const newUser: IUser = {login, password, id: uuidv4(),balance:2000}

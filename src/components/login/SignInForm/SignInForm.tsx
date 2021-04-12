@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { observer } from 'mobx-react';
 import { useHistory } from "react-router-dom";
 import './SignInForm.scss';
@@ -6,7 +6,7 @@ import IUser from '../../../interfaces/IUser';
 import { v4 as uuidv4 } from 'uuid';
 
 interface  ILoginPageProps{
-    signIn:  (newUser: IUser) => boolean
+    signIn:  (newUser: IUser) => void
     isLogged: boolean;
 }
 const SignInForm = observer(({signIn, isLogged}:ILoginPageProps) => {    
@@ -19,18 +19,17 @@ const SignInForm = observer(({signIn, isLogged}:ILoginPageProps) => {
             return
         }
         const newUser: IUser = {login, password, id: uuidv4(),balance:2000}
-       
-        if( signIn(newUser)){
-            history.push('/')
-        }
-        else {
-            alert('Wrong login or pass')
-        }
+        signIn(newUser)        
+        setLogin("");
+        setPassword("")
+        history.push('/')
     }
 
     return(
         <div className="form login-form">
+               {console.log(isLogged)}
             <form onSubmit={handleSignIn}> 
+                 
                     <p className = "form__title">Sign In</p>                   
                     <input className="input" value={login} onChange={(e) => setLogin(e.target.value)}
                     type="text" placeholder="Enter login" /><br />

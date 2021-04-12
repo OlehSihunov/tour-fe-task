@@ -6,6 +6,11 @@ export default class CartStore {
     makeObservable(this)
   }
   @observable selectedTours: ITourStore[] = JSON.parse(localStorage.getItem('selectedTours') || '[]');
+
+  @action balanceLimit = (s: number) => {
+    return 2000 - s
+  }
+  
   @action checkoutTours = (userId: string) => {
     this.selectedTours= this.selectedTours.filter(el => el.userId !== userId);
     alert('Congratulations! Your order is accepted, please wait for our call.');
