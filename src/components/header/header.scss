@@ -17,8 +17,11 @@
         color:#333333;
     }
     a {
+        &:hover{
+            color: #fff;
+        }
         text-decoration: none;
-        color:white;
+        color: #1827B0;
         padding: 0  5px ;
         font-size: 18px;
     }
@@ -26,10 +29,12 @@
     &__title {
         font-size: 36px;
         padding: 5px 80px;
+        color: #fff;
     }
     &__user {
         display: flex;
         justify-content: space-between;
+        color: #fff;
     }
     strong {
         padding: 0 15px;

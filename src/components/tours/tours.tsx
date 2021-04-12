@@ -25,10 +25,10 @@ const Tours = observer(() => {
     function getPage(page :number,size :number,sort: string, minPrice :number, maxPrice :number) {
         const pageTours = tours.slice();
         if(sort === 'ASC')
-          pageTours.sort((a:ITour,b:ITour) => parseInt(a.price)-parseInt(b.price) )
+          pageTours.sort((a:ITour,b:ITour) => a.price-b.price )
         else 
-          pageTours.sort((a:ITour,b:ITour) => parseInt(b.price)-parseInt(a.price) )
-        let result = pageTours.filter((tour:ITour) => parseInt(tour.price)>minPrice&&parseInt(tour.price)<maxPrice);
+          pageTours.sort((a:ITour,b:ITour) => b.price-a.price )
+        let result = pageTours.filter((tour:ITour) => tour.price>minPrice&&tour.price<maxPrice);
         awailableTours = result.length;
         return result.filter((el :ITour,index: number) =>index>=(page-1)*size && index<page*size)
       }
