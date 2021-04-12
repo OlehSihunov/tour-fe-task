@@ -15,7 +15,7 @@ const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCoun
   const onRemovePerson = () => {
     removePerson(id, userId);
   };
-  const varPrice = parseInt(price.replace(/[^\d]/g, ''));
+  const varPrice =price;
   const endedPrice = personCount * varPrice;
 
   return (

@@ -18,7 +18,7 @@ const SignInForm = observer(({signIn, isLogged}:ILoginPageProps) => {
             alert("log and pass err")
             return
         }
-        const newUser: IUser = {login, password, id: uuidv4()}
+        const newUser: IUser = {login, password, id: uuidv4(),balance:2000}
        
         if( signIn(newUser)){
             history.push('/')

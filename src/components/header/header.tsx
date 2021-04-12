@@ -19,6 +19,7 @@ const Header = observer(() => {
                 : 
                 <React.Fragment>
                      <strong>{user.login}</strong>
+                     <strong>{user.balance}$</strong>
                      <strong onClick ={signOut}>Log Out</strong>
                      <Cart></Cart>
                 </React.Fragment>

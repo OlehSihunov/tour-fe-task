@@ -20,7 +20,7 @@ const SignUpForm = observer(({addNewUser: IUser}:ISignUpPageProps) => {
     
     const signUp = () => { 
         if(login!==''&&password!==''&&password===passwordRepeat) {
-            const newUser: IUser = {login, password, id: uuidv4()}
+            const newUser: IUser = {login, password, id: uuidv4(),balance:2000}
             setLogin('')
             setPassword('')
             addNewUser(newUser)
