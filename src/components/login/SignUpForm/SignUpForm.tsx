@@ -4,7 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import './signUpForm.scss'
+import './SignUpForm.scss'
 import Styles from '../../stylesMUI/stylesMUI';
 import IUser from '../../../interfaces/IUser';
 import { v4 as uuidv4 } from 'uuid';

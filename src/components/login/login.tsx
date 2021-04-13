@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './login.scss';
 import { observer } from 'mobx-react';
 import rootStore from '../../stores/rootStore';
-import SignUpForm from './signUpForm/signUpForm';
-import SignInForm from './signInForm/signInForm';
+import SignUpForm from './SignUpForm/SignUpForm';
+import SignInForm from './SignInForm/SignInForm';
 import { useHistory } from 'react-router-dom';
 
 const LoginPage = observer(() => {
@@ -23,7 +23,7 @@ const LoginPage = observer(() => {
            {signInF?
            <SignInForm signIn={signIn} isLogged={isLogged} switchForm ={switchForm} /> 
            :
-           <SignUpForm addNewUser={addNewUser}   switchForm ={switchForm} isLogged={isLogged}/>   
+           <SignUpForm addNewUser={addNewUser} switchForm ={switchForm} isLogged={isLogged}/>   
             }    
        </div>
     )
