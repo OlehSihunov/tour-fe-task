@@ -12,12 +12,12 @@ import { useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Email } from '@material-ui/icons';
 
-interface  ISignUpPageProps{
+interface  ISignUpFormProps{
     addNewUser:  (newUser: IUser) => void,
     isLogged: boolean,
     switchForm: ()=>void
 }
-const SignUpPage = observer(({addNewUser, isLogged,switchForm}:ISignUpPageProps)  => {
+const SignUpForm = observer(({addNewUser, isLogged,switchForm}:ISignUpFormProps)  => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [passwordRepeat, setPasswordRepeat] = useState('')
@@ -115,4 +115,4 @@ const SignUpPage = observer(({addNewUser, isLogged,switchForm}:ISignUpPageProps)
     )
 })
 
-export default SignUpPage;
+export default SignUpForm;
