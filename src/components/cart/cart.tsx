@@ -6,12 +6,13 @@ import ITourStore from '../../interfaces/ITourstore';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import CartOrderItem from './cartOrderItem/cartOrderItem';
+import React from 'react';
 
 const Cart = observer(() => {
 
     const { user } = rootStore.loginStore;
     const [showModal, setState] = useState(false);
-    const { selectedTours, checkoutTours, balanceLimit } = rootStore.cartStore;
+    const { selectedTours, checkoutTours } = rootStore.cartStore;
     const toggleModal = () => {
         setState(!showModal);
     }
@@ -26,8 +27,12 @@ const Cart = observer(() => {
     }
     const filteredTours = selectedTours.filter(el => el.userId === user.id);
     const sumPay = filteredTours.reduce((acc, { price, personCount }) => acc + price * personCount, 0);
-    let balance = balanceLimit(sumPay);
 
+    const canPay =(value:number = 0):boolean =>{
+        if(user.balance-sumPay-value >0)
+            return true
+        return false
+    }
 
     return (
         <div className="cart">
@@ -42,18 +47,24 @@ const Cart = observer(() => {
                     <div className="modal__modal-in" >
                         <header className="modal__modal-in__header">
                             <span className="modal__modal-in__title">Cart</span>
-                            <span className="modal__modal-in__footer__span">Your ballance: {balance}$</span>
+                            <span className="modal__modal-in__footer__span">Your ballance: {user.balance}$</span>
                             <button onClick={closeModel}>X</button>
                         </header>
                         <ol className="modal__modal-in__list">
                             {filteredTours.map((tour: ITourStore, key: number) => <CartOrderItem key={key} tour={tour} />)}
                         </ol>
                         <div className="modal__modal-in__footer">
-                            <span className="modal__modal-in__footer__span">{sumPay}$</span>
-                            {balance < 0
-                                ? alert("no no no")
-                                : <button className="modal__modal-in__footer__btn" onClick={onCheckout} disabled={!selectedTours.length}>Buy now</button>
+                            {!canPay()?
+                            <React.Fragment>
+                                 <span className="modal__modal-in__footer__span-alert">You can't pay for it</span>
+                                 <span className="modal__modal-in__footer__span-alert">{sumPay}$</span>
+                            </React.Fragment>
+                           :
+                           <span className="modal__modal-in__footer__span">{sumPay}$</span>
                             }
+                           
+                            <button className="modal__modal-in__footer__btn" onClick={onCheckout} disabled={!selectedTours.length||!canPay()}>Buy now</button>
+                            
 
                         </div>
                     </div>

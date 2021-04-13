@@ -20,6 +20,7 @@ const Header = observer(() => {
                 <React.Fragment>
                      <strong>{user.login}</strong>
                      <strong>{user.balance}$</strong>
+                     <NavLink to = {`/usertours/`+user.id}>Click</NavLink>
                      <strong onClick ={signOut}>Log Out</strong>
                      <Cart></Cart>
                 </React.Fragment>

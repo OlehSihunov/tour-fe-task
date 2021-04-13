@@ -7,11 +7,26 @@ export default class CartStore {
   }
   @observable selectedTours: ITourStore[] = JSON.parse(localStorage.getItem('selectedTours') || '[]');
 
-  @action balanceLimit = (s: number) => {
-    return 2000 - s
-  }
   
   @action checkoutTours = (userId: string) => {
+    const order:ITourStore[] = this.selectedTours.filter(el=>el.userId===userId)
+    order.forEach(element => {
+      fetch('http://localhost:8765/api/tours/users/addNew', {
+                method: 'POST',
+                body: JSON.stringify({
+                    userId: `${element.userId}`,
+                    tourId: `${element.id}`,
+                    amount: `${element.personCount}`
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then((response) => response.json()).then(response=>{
+            if(response.status ===400){
+                alert(response.message)
+            }})
+    });
     this.selectedTours= this.selectedTours.filter(el => el.userId !== userId);
     alert('Congratulations! Your order is accepted, please wait for our call.');
     this.saveTours();

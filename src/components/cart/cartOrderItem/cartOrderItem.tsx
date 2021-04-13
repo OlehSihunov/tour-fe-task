@@ -5,7 +5,7 @@ import ITourStore from '../../../interfaces/ITourstore';
 
 const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount, userId } }: { tour: ITourStore },balance:{balance: number} ) => {
   console.log("work props " + balance)
-  const {removePerson, addPerson, removeTour, balanceLimit} = rootStore.cartStore;
+  const {removePerson, addPerson, removeTour} = rootStore.cartStore;
   const onRemoveTour = () => {
     removeTour(id,userId);
   }
