@@ -5,7 +5,6 @@
     justify-content: space-between;
     margin: 10px;
     color: #333;
-    //background-color: #eee;
     border-radius: 15px;
     padding: 5px 15px;
     &__img{
@@ -33,17 +32,17 @@
         height: 30px;
         margin: 10px;
         border: none;
-        box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.6);
-        &_decreace {
+        box-shadow: 0 3px 5px 0 rgb(60 60 60 / 90%);
+        &__decreace {
             &:hover {
             transition: 0.1s;
-            box-shadow: 0 4px 10px 0 rgba(32, 32, 32, 0.9);
+            box-shadow: 0 4px 7px 0 rgb(127, 127, 127, 0.2);
             }
         }
-        &_increace {
+        &__increace {
           &:hover {
           transition: 0.1s;
-          box-shadow: 0 4px 10px 0 #B3D929;
+          box-shadow: 0 4px 7px 0 #0BAB64;
           }
       }
       }
@@ -55,21 +54,24 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      color: #B3D929;
+      color: #0BAB64;
       font-weight: 600;
       font-size: 22px;
+      &__span {
+        color: #0BAB64;
+      }
       &__btn {
         width: 100px;
         height: 30px;
         margin: 10px;
         border: none;
         border-radius: 5px;
-        box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.6);
+        box-shadow: 0 3px 5px 0 rgb(60 60 60 / 90%);
         &:hover {
             color:white;
             background-color: #555555;
             transition: 0.1s;
-            box-shadow: 0 4px 10px 0 rgba(160, 160, 160, 0.5);
+            box-shadow: 0 4px 7px 0 rgb(127, 127, 127, 0.2);
         }
       }
     }
