@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './login.scss';
 import { observer } from 'mobx-react';
 import rootStore from '../../stores/rootStore';
-import SignUpForm from './SignUpForm/SignUpForm';
-import SignInForm from './SignInForm/SignInForm';
+import SignUpForm from './signUpForm/signUpForm';
+import SignInForm from './signInForm/signInForm';
 import { useHistory } from 'react-router-dom';
-import SignInPage from '../signInPage/signInPage';
-import SignUpPage from '../signUpPage/signUpPage';
 
 const LoginPage = observer(() => {
     const { addNewUser, signIn, isLogged} = rootStore.loginStore
@@ -23,9 +21,9 @@ const LoginPage = observer(() => {
     return (
        <div className="login-wrapper">
            {signInF?
-           <SignInPage signIn={signIn} isLogged={isLogged} switchForm ={switchForm} /> 
+           <SignInForm signIn={signIn} isLogged={isLogged} switchForm ={switchForm} /> 
            :
-           <SignUpPage addNewUser={addNewUser}   switchForm ={switchForm} isLogged={isLogged}/>   
+           <SignUpForm addNewUser={addNewUser}   switchForm ={switchForm} isLogged={isLogged}/>   
             }    
        </div>
     )
