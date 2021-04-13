@@ -12,7 +12,7 @@ const UserOrder = () => {
     const [tours,setTours] = useState<ITourStore[]>([])
     const {user,signOut}  = rootStore.loginStore
     const getTours = async () => {
-        let r = await fetch(`http://desktop-jqb4p2t:8765/api/tours/users/${user.id}`)
+        let r = await fetch(`http://localhost:8765/api/tours/users/${user.id}`)
         let tours = await r.json();
         setTours(tours)
         console.log(tours)
