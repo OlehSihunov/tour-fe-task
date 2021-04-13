@@ -4,6 +4,9 @@
     align-items: center;
     width: 100%;
     height: 80vh;
+    
+    background-image: url(../../img/1.jpg);
+    background-size:cover;
     .form{
         &:hover{
             transition: 500ms;
