@@ -1,4 +1,5 @@
 import './tour.scss'
+import './tourphoto.scss'
 import React, {useEffect, useState}  from 'react'
 import {useParams} from 'react-router-dom'
 import rootStore from '../../stores/rootStore'
@@ -34,7 +35,7 @@ const Tour = () => {
       };
 
     const getTour = async() => {
-        let r = await fetch('http://desktop-jqb4p2t:8765/api/tours/'+params.id)
+        let r = await fetch('http://localhost:8765/api/tours/'+params.id)
         let tour = await r.json();
         setTour(tour)
         setSelected(!!selectedTours.find(etour => etour.id === tour.id&&etour.userId === user.id))
@@ -46,16 +47,25 @@ const Tour = () => {
     return (
 
         <div className='tour'>
-            <div className ='tour__img'>
-            <img src={tour.imageUrl} alt="tooo"/>
+            <p className="tour__title">{tour?.title}</p>
+            <div className='container'>
+                <div className ='tour__img'>
+                    <a className="lightbox" href="#dog">
+                        <img src={tour.imageUrl} alt="tooo"/>
+                    </a> 
+                    <div className="lightbox-target" id="dog">
+                        <img src={tour.imageUrl} alt="tooo"/>
+                        <a className="lightbox-close" href="#"></a>
+                    </div>               
+                </div>
+                <div className = 'container__info'>
+                    <p className="container__info__description">{tour?.description}</p>
+                    <p className="container__info__price">Price: {tour?.price} 
+                    <button className={`container-card__footer__add-btn ${isSelected ? 'container-card__footer__add-btn_selected' : ''}`}
+            onClick={onAdd}>{isSelected?'In Cart' : 'Add to cart'}</button></p>
+                </div>
             </div>
-            <div className = 'tour__info'>
-                <p className="tour__info__title">{tour?.title}</p>
-                <p className="tour__info__description">{tour?.description}</p>
-                <p className="tour__info__price">Price: {tour?.price} 
-                <button className={`tour-card__footer__add-btn ${isSelected ? 'tour-card__footer__add-btn_selected' : ''}`}
-          onClick={onAdd}>{isSelected?'In Cart' : 'Add to cart'}</button></p>
-            </div>
+            
         </div>
     )
 }

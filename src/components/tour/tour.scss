@@ -1,34 +1,45 @@
 .tour {
+    margin: 0 auto;
     padding: 20px  50px;
     display: flex;
-    flex-direction: row;
+    flex-direction:column;
     justify-content: center;
-    &__img {
-       min-width: 600px;
-       img {
-           width: 100%;
-           height: auto;
-           border-radius: 5px;
-       }
+    &__title{
+        margin: 0 0 50px 0;
+        font-weight: bold;
+        font-size: 36px;
     }
-    &__info{
-        min-width: 400px;
+    .container{
+        width: 60vw;
         display: flex;
-        flex-direction: column;
-        padding-left: 25px;
-        &__title {
-            font-weight: bold;
-            font-size: 36px;
+        flex-direction: row;
+        &__img {
+           min-width: 40vw;
+           img {
+               margin: 0;
+               width: 100%;
+               height: auto;
+               border-radius: 5px;
+           }
         }
-        &__description {
-            text-align: left;
-            font-size: 18px;
-        }
-        &__price {
-            font-weight: 600;
-            font-size: 24px;
-            color: #B3D929;
-        }
+        &__info{
+            min-width: 50vw;
+            display: flex;
+            flex-direction: column;
+            padding-left: 25px;           
+            &__description {
+                text-align: left;
+                font-size: 18px;
+            }
+            &__price {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                font-weight: 600;
+                font-size: 24px;
+                color: #B3D929;
+            }
+    }
     }
 
 }
