@@ -7,7 +7,7 @@ import './userOrderItem.scss';
 }
 const UserOrderItem =({tour}:IUserOrderItemProps)=> {
     return(
-        <div className="modal-in__container">
+        <div className="modal-user-in__container">
             <img src={tour.imageUrl} className="modal-in__container__img" alt = 'cartholder img'/>
             <span className="modal-in__container__title">{tour.title}</span>
             <div className="modal-in__container__counter">
