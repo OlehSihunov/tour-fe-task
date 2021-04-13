@@ -41,10 +41,17 @@ const SignUpPage = observer(({addNewUser, isLogged,switchForm}:ISignUpPageProps)
 
 
     const handleLogin = (e:React.ChangeEvent<HTMLInputElement>) => {
-        setLogin(e.target.value)
-        !e.target.value ? setLoginError(true) : setLoginError(false)
+        if(e.target.value.length>150){
+            alert("Login to long")
+            setLogin('')
+        }else{
+            setLogin(e.target.value)
+            !e.target.value ? setLoginError(true) : setLoginError(false)
+        }
+       
     }
     const handlePassword = (e:React.ChangeEvent<HTMLInputElement>) => {
+        
         setPassword(e.target.value)
         !e.target.value ? setPasswordError(true) : setPasswordError(false)
     }
