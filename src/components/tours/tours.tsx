@@ -1,44 +1,47 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { observer } from 'mobx-react'
-import rootStore from '../../stores/rootStore'
+//import rootStore from '../../stores/rootStore'
 import TourCard from './tourCard/tourCard'
 import './tours.scss'
 import ITour from '../../interfaces/ITour'
 
 const Tours = observer(() => {
-    const {tours} = rootStore.toursStore
+    const [tours,setTours] = useState<ITour[]>([])
     const [page,setPage] = useState(1)
-    const [size] = useState(6)
-    const [sort,setFilter] = useState('ASC')
+    const [size] = useState(20)
+    const [sort,setFilter] = useState('asc')
     const [maxPrice,setMaxPrice] =useState(9999)
     const [minPrice,setMinPrice] = useState (0)
-    let awailableTours :number =tours.length ;
+    const [pages,setPages] = useState(1);
+  
+    const getTours = async () => {
+        let r = await fetch(`http://desktop-jqb4p2t:8765/api/tours/getPage?page=${page-1}&size=${size}&minPrice=${minPrice}&maxPrice=${maxPrice}&sort=price,${sort}`)
+        let tours = await r.json();
+        console.log(tours)
+        setTours(tours.content)
+        setPages(tours.totalPages)
+    }
+
+    useEffect( () => {
+        getTours()
+
+      },[page,sort,minPrice,maxPrice])
     function generatePagination() {
       
-        const numberOfPages = awailableTours/size
+        const numberOfPages = pages
         const links = []
         for(let i = 1; i <=numberOfPages;i++){
             links.push(i)
         }
         return links
     }
-    function getPage(page :number,size :number,sort: string, minPrice :number, maxPrice :number) {
-        const pageTours = tours.slice();
-        if(sort === 'ASC')
-          pageTours.sort((a:ITour,b:ITour) => a.price-b.price )
-        else 
-          pageTours.sort((a:ITour,b:ITour) => b.price-a.price )
-        let result = pageTours.filter((tour:ITour) => tour.price>minPrice&&tour.price<maxPrice);
-        awailableTours = result.length;
-        return result.filter((el :ITour,index: number) =>index>=(page-1)*size && index<page*size)
-      }
     return (
         <div className='tours'>
             <h1>Tours</h1>  
             <div className ='tours__sort'>
                 <select onChange ={(e)=>setFilter(e.target.value)}>
-                    <option value ='ASC' >From cheap to expencive</option>
-                    <option value = 'DESC'>From expencive to cheap</option>
+                    <option value ='asc' >From cheap to expencive</option>
+                    <option value = 'desc'>From expencive to cheap</option>
                 </select>
                 <form>
                     <label>Min price:</label>
@@ -47,11 +50,13 @@ const Tours = observer(() => {
                     <input value = {maxPrice} placeholder ='max price' onChange = {e=>setMaxPrice(parseInt(e.target.value)||0)}></input>
                 </form>
             </div>
-        {getPage(page,size,sort,minPrice,maxPrice).map(tour =>{
+        {tours.map(tour =>{
             return <TourCard key = {tour.id} tour = {tour}></TourCard>
         })}
         <p>{generatePagination().map(el => {
-            return <span key = {el} className = {`tours__page-number ${el===page?'tours__page-number_active' : ''}`} onClick = {()=>setPage(el)}>{el}</span>
+            return <span key = {el} className = {`tours__page-number ${el===page?'tours__page-number_active' : ''}`} onClick = {()=>{
+                console.log("page "+el);
+                setPage(el)}}>{el}</span>
         })}</p>
      </div>
     )

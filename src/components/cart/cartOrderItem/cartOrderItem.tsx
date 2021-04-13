@@ -3,15 +3,9 @@ import rootStore from '../../../stores/rootStore';
 import { observer } from 'mobx-react';
 import ITourStore from '../../../interfaces/ITourstore';
 
-<<<<<<< Updated upstream
-
-const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount, userId } }: { tour: ITourStore }) => {
-  const {removePerson, addPerson, removeTour} = rootStore.cartStore;
-=======
 const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCount, userId } }: { tour: ITourStore },balance:{balance: number} ) => {
   console.log("work props " + balance)
-  const {removePerson, addPerson, removeTour, balanceLimit} = rootStore.cartStore;
->>>>>>> Stashed changes
+  const {removePerson, addPerson, removeTour} = rootStore.cartStore;
   const onRemoveTour = () => {
     removeTour(id,userId);
   }
