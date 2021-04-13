@@ -55,7 +55,8 @@ const Tours = observer(() => {
                     }}>
                     <option value ='3' >3</option>
                     <option value = '6'>6</option>
-                    <option selected value = '12'>12</option>
+                    <option selected value = '9'>9</option>
+                    <option value = '12'>12</option>
                     <option value = '24'>24</option>
                 </select>
                 </div>
