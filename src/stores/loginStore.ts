@@ -10,7 +10,7 @@ export default class LoginState {
     @observable isLogged :boolean  = !!JSON.parse(localStorage.getItem('user')||'{}').login
 
     @action addNewUser = (newUser: IUser) => {
-            fetch('http://localhost:8765/api/users/signup', {
+            fetch('http://localhost:8765/api/users/signUp', {
                 method: 'POST',
                 body: JSON.stringify({
                     id: `${newUser.id}`,
@@ -39,7 +39,7 @@ export default class LoginState {
         this.updateUsers()
     }
     @action signIn = (user: IUser) => {
-            fetch('http://localhost:8765/api/users/signin', {
+            fetch('http://localhost:8765/api/users/signIn', {
                 method: 'POST',
                 body: JSON.stringify({
                     login: `${user.login}`,
