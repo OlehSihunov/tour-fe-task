@@ -1,47 +1,116 @@
-import React, {useEffect, useState} from 'react';
-import { observer } from 'mobx-react-lite';
-import rootStore from '../../../stores/rootStore';
-import './SignUpForm.scss';
+import React, { useState } from 'react'
+import {Button} from '@material-ui/core'
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import InputLabel from '@material-ui/core/InputLabel';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import './SignUpForm.scss'
+import Styles from '../../stylesMUI/stylesMUI';
 import IUser from '../../../interfaces/IUser';
-import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
+import { useHistory } from 'react-router-dom';
+import { observer } from 'mobx-react';
+import { Email } from '@material-ui/icons';
 
-interface  ISignUpPageProps{
+interface  ISignUpFormProps{
     addNewUser:  (newUser: IUser) => void,
-    isLogged: boolean
+    isLogged: boolean,
+    switchForm: ()=>void
 }
-
-const SignUpForm = observer(({addNewUser,isLogged}:ISignUpPageProps) => {
-
-    const [login, setLogin] =useState('');
-    const [password, setPassword] =useState('');
-    const [passwordRepeat, setPasswordRepeat] =useState('');
+const SignUpForm = observer(({addNewUser, isLogged,switchForm}:ISignUpFormProps)  => {
+    const [login, setLogin] = useState('')
+    const [password, setPassword] = useState('')
+    const [passwordRepeat, setPasswordRepeat] = useState('')
+    const [loginError, setLoginError] = useState(false)
+    const [passwordError, setPasswordError] = useState(false)
+    const [passwordRepeatError, setPasswordRepeatError] = useState(false)
     const history = useHistory();
-    const signUp = () => { 
-        if(login!==''&&password!==''&&password===passwordRepeat) {
-            const newUser: IUser = {login, password, id: uuidv4(),balance:2000}
-            setLogin('')
-            setPassword('')
-            addNewUser(newUser)
-            history.push('/')
-        }
-        else {
-            alert("Empty fields need to be filled")
-        }
-        
+    const handleSubmit = () => {
+      !login ? setLoginError(true) : setLoginError(false)
+      !password  ?setPasswordError(true) : setPasswordError(false)
+      if(login&&password&&passwordRepeat==password){
+        const newUser: IUser = {login, password, id: uuidv4(),balance:2000}
+        addNewUser(newUser)        
+        setLogin("");
+        setPassword("")
+        setPasswordRepeat("")
+        history.push('/')
+      }
+       
     }
-  
-    return (
-        <div className="form signup-form">
-             <form onSubmit={signUp} className="login-form">
-                 
-                 <p className = "form__title">Sign Up</p>     
-                 <input className="input" value={login} onChange={(e)=>setLogin(e.target.value)} type="text" placeholder="Enter login" /><br />
-                 <input className="input" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Enter password" /><br />  
-                 <input className="input" value={passwordRepeat} onChange={(e)=>setPasswordRepeat(e.target.value)} type="password" placeholder="Repeat password" /><br />  
-                 <input className="submit-btn" type="submit" value="Sign Up"/>                 
-             </form>
 
+
+    const handleLogin = (e:React.ChangeEvent<HTMLInputElement>) => {
+        if(e.target.value.length>150){
+            alert("Login to long")
+            setLogin('')
+        }else{
+            setLogin(e.target.value)
+            !e.target.value ? setLoginError(true) : setLoginError(false)
+        }
+       
+    }
+    const handlePassword = (e:React.ChangeEvent<HTMLInputElement>) => {
+        
+        setPassword(e.target.value)
+        !e.target.value ? setPasswordError(true) : setPasswordError(false)
+    }
+    const handlePasswordRepeat = (e:React.ChangeEvent<HTMLInputElement>) => {
+        setPasswordRepeat(e.target.value)
+        !e.target.value ? setPasswordRepeatError(true) : setPasswordRepeatError(false)
+    }
+
+    const classes  = Styles()
+    return(
+        <div className = "form-wrapper">
+        <div className = 'login-form' id = 'login-form'>
+                    <h1>Sign Up</h1>
+                    <FormControl variant="outlined"
+                     className={classes.textField}
+                     error ={loginError}>
+                        <InputLabel htmlFor="component-outlined" 
+                        className={classes.inputLabel} 
+                        >Login</InputLabel>
+                        <OutlinedInput id="component-outlined"
+                        value={login} 
+                        className={classes.inputField} 
+                        onChange={ (e:React.ChangeEvent<HTMLInputElement>) => handleLogin(e)} 
+                        label="Login" 
+                        aria-describedby="component-error-login-text"/>
+                        <FormHelperText id="component-error-login-text">{loginError ? 'Login Required':`\ `}</FormHelperText>
+                    </FormControl>
+                    <FormControl variant="outlined"
+                    className={classes.textField}
+                    error ={passwordError} >
+                        <InputLabel htmlFor="component-outlined-password">Password</InputLabel>
+                        <OutlinedInput id="component-outlined-password" 
+                        value={password}   
+                        type = "password"
+                        className={classes.inputField} 
+                        onChange={ (e:React.ChangeEvent<HTMLInputElement>) => handlePassword(e)} 
+                        label="Password" 
+                        aria-describedby="component-error-password-text"/>
+                        <FormHelperText id="component-error-password-text">{passwordError ? 'Password Required' : `\ `}</FormHelperText>
+                    </FormControl>
+                    <FormControl variant="outlined"
+                    className={classes.textField}
+                    error ={passwordRepeatError} >
+                        <InputLabel htmlFor="component-outlined-password-repeat">Repeat Password </InputLabel>
+                        <OutlinedInput id="component-outlined-password" 
+                        value={passwordRepeat}   
+                        className={classes.inputField} 
+                        onChange={ (e:React.ChangeEvent<HTMLInputElement>) => handlePasswordRepeat(e)} 
+                        label="Repeat password" 
+                        type = "password"
+                        aria-describedby="component-error-password-repeat-text"/>
+                        <FormHelperText id="component-error-password-repeat-text">{passwordError ? 'Password Repeat Required' : `\ `}</FormHelperText>
+                    </FormControl>
+                    <Button 
+                    className = {` ${classes.btn} ${passwordError||loginError ? classes.btnDis : classes.btnAct}`} 
+                    size ='large' onClick = { () => handleSubmit()}
+                    >Sign Up</Button>
+                    <p>Already have an account ? <span onClick={()=>switchForm()}>Sign In</span></p>
+        </div>
         </div>
     )
 })
