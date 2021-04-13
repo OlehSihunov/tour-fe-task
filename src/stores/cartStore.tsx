@@ -30,7 +30,6 @@ export default class CartStore {
     this.selectedTours= this.selectedTours.filter(el => el.userId !== userId);
     alert('Congratulations! Your order is accepted, please wait for our call.');
     this.saveTours();
-    window.location.reload();
   }
   @action addPerson = (id: number, userId: string) => {
     this.selectedTours.map(el => {
