@@ -15,7 +15,7 @@ const Tours = observer(() => {
     const [pages,setPages] = useState(1);
   
     const getTours = async () => {
-        let r = await fetch(`http://desktop-jqb4p2t:8765/api/tours/getPage?page=${page-1}&size=${size}&minPrice=${minPrice}&maxPrice=${maxPrice}&sort=price,${sort}`)
+        let r = await fetch(`http://localhost:8765/api/tours/getPage?page=${page-1}&size=${size}&minPrice=${minPrice}&maxPrice=${maxPrice}&sort=price,${sort}`)
         let tours = await r.json();
         console.log(tours)
         setTours(tours.content)

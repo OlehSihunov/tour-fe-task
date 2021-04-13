@@ -34,7 +34,7 @@ const Tour = () => {
       };
 
     const getTour = async() => {
-        let r = await fetch('http://desktop-jqb4p2t:8765/api/tours/'+params.id)
+        let r = await fetch('http://localhost:8765/api/tours/'+params.id)
         let tour = await r.json();
         setTour(tour)
         setSelected(!!selectedTours.find(etour => etour.id === tour.id&&etour.userId === user.id))
