@@ -26,7 +26,7 @@ export default class LoginState {
             if(response.status ===400){
                 alert(response.message)
             }else{
-                this.user = newUser
+                this.user = response
                 this.updateUsers()
                 this.isLogged=true
             }}).then((json) => console.log(json));
@@ -54,13 +54,41 @@ export default class LoginState {
                 if(response.status ===400){
                     alert(response.message)
                 }else{
-                    this.user = user
+                    this.user = response
                     this.updateUsers()
                     this.isLogged=true
                 }})
     }
     @action getCurrentUserLogin = () => this.user.login
     
+    @action updateUserBalance = (newBalance :number) => {
+        console.log(newBalance)
+        console.log(this.user)
+        fetch('http://localhost:8765/api/users/changeBalance', {
+                method: 'POST',
+                body: JSON.stringify({
+                    id:`${this.user.id}`,
+                    login: `${this.user.login}`,
+                    password: `${this.user.password}`,
+                    balance: newBalance
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then((response) => response.json())
+            .then(response =>{
+                if(response.status ===400){
+                    alert(response.message)
+                }else{
+                    this.user = response
+                    this.updateUsers()
+                    this.isLogged=true
+                    
+                    window.location.reload();
+                }})
+            
+    }
 
     updateUsers() {
         localStorage.setItem('user', JSON.stringify(this.user))

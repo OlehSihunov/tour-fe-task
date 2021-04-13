@@ -13,6 +13,7 @@ const Cart = observer(() => {
     const { user } = rootStore.loginStore;
     const [showModal, setState] = useState(false);
     const { selectedTours, checkoutTours } = rootStore.cartStore;
+    const { updateUserBalance } = rootStore.loginStore;
     const toggleModal = () => {
         setState(!showModal);
     }
@@ -23,6 +24,8 @@ const Cart = observer(() => {
     }
     const onCheckout = () => {
         checkoutTours(user.id);
+        console.log("ONCHECOUT");
+        updateUserBalance(user.balance-sumPay);
         toggleModal();
     }
     const filteredTours = selectedTours.filter(el => el.userId === user.id);
