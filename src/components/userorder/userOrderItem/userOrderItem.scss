@@ -5,15 +5,13 @@
     justify-content: space-between;
     margin: 10px;
     color: #333;
-    //background-color: #eee;
     border-radius: 15px;
     padding: 5px 15px;
     &__img{
       display: flex;
-      
       margin-right: 10px;
       height: 135px;
-      border-radius: 15px;
+      border-radius: 10px;
     }
     &__title{
       display: flex;
@@ -28,25 +26,6 @@
       display: flex;
       align-items: center;
       max-width: 20%;
-      &__btn {
-        width: 30px;
-        height: 30px;
-        margin: 10px;
-        border: none;
-        box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.3);
-        &_decreace {
-            &:hover {
-            transition: 0.1s;
-            box-shadow: 0 4px 10px 0 rgba(32, 32, 32, 0.3);
-            }
-        }
-        &_increace {
-          &:hover {
-          transition: 0.1s;
-          box-shadow: 0 4px 10px 0 #B3D929;
-          }
-      }
-      }
     }
     &__res{
       max-width: 20%;
@@ -55,22 +34,8 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      color: #B3D929;
+      color: #049252;
       font-weight: 600;
       font-size: 22px;
-      &__btn {
-        width: 100px;
-        height: 30px;
-        margin: 10px;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.3);
-        &:hover {
-            color:white;
-            background-color: #555555;
-            transition: 0.1s;
-            box-shadow: 0 4px 10px 0 rgba(160, 160, 160, 0.3);
-        }
-      }
     }
   }
