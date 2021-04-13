@@ -22,9 +22,9 @@ const CartOrderItem = observer(({ tour: { id, title, imageUrl, price, personCoun
       <img src={imageUrl} className="modal-in__container__img" alt = 'cartholder img'/>
       <span className="modal-in__container__title">{title}</span>
       <div className="modal-in__container__counter">
-        <button className="modal-in__container__counter__btn modal-in__container__counter__btn__decreace" onClick={onRemovePerson} disabled={personCount===1}>-</button>
+        <button className="modal-in__container__counter__btn modal-in__container__counter__btn_decreace" onClick={onRemovePerson} disabled={personCount===1}>-</button>
         <span className="modal-in__container__counter__span">{personCount}</span>
-        <button className="modal-in__container__counter__btn modal-in__container__counter__btn__increace" onClick={onAddPerson}>+</button>
+        <button className="modal-in__container__counter__btn modal-in__container__counter__btn_increace" onClick={onAddPerson}>+</button>
       </div>
       <div className="modal-in__container__res">
         <span className="modal-in__container__res__span">{endedPrice}$</span>
