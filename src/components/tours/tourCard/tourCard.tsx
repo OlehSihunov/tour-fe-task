@@ -29,9 +29,9 @@ const TourCard = observer(({tour}:ITourCardProps) => {
       <p className="tour-card__title">{tour.title}</p>
       <p className="tour-card__description">{tour.description}</p>
       <div className="tour-card__footer">
-        <button className={`tour-card__footer__add-btn ${isSelected ? 'tour-card__footer__add-btn_selected' : ''}`}
+        <button className={`tour-card__footer__add-btn ${isSelected ? 'tour-card__footer__add-btn__selected' : ''}`}
           onClick={onAdd}>{isSelected?'In Cart' : 'Add to cart'}</button>
-        <p className="tour-card__footer__price">{tour.price}</p>
+        <p className="tour-card__footer__price">{tour.price}$</p>
       </div>
     </Link>
     );

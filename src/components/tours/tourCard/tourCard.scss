@@ -41,15 +41,28 @@
     &__add-btn {
       display: flex;
       border: none;
-      box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.6);
+      box-shadow: 0 3px 5px 0 rgb(60 60 60 / 90%);
       margin: 5px;
-      padding: 5px 10px ;
-      font-size: 16px;
-      font-size: normal;
-      &_selected {
-        box-shadow: 0 10px 30px 0 rgb(127, 127, 127, 0.6);
+      padding: 10px;
+      font-size: revert;
+      font-weight: bold;
+      color: rgb(0, 0, 0);
+      &:hover {
+        transition: 0.1s;
+        box-shadow: 0 4px 7px 0 #0BAB64;
+        cursor: revert;
+        }
+      &__selected {
+        box-shadow: 0 3px 5px 0 rgb(60 60 60 / 90%);
         margin: 5px;
-        color: dimgrey;
+        padding: 10px;
+        font-size: revert;
+        color: rgb(138, 138, 138);
+        &:hover {
+          transition: 0.1s;
+          box-shadow: 0 4px 7px 0 rgb(60 60 60 / 90%);
+          cursor: not-allowed;
+          }
       }
     }
     &__price {
@@ -57,7 +70,7 @@
       text-align: right;
       font-weight: bold;
       margin: 0px;
-      color: #B3D929;
+      color: #0BAB64;
     }
   }
   
