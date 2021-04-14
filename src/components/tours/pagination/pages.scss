@@ -1,0 +1,21 @@
+.pages{
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    font-weight: 450;
+    .pages-item {
+        height:25px;
+        min-width: 25px;
+        padding: 5px;
+        box-shadow: 0 0 5px 0 #0bab64;
+        border-radius: 10px;
+        display: flex;
+        margin: 5px;
+        justify-content: center;
+        align-items: center;
+        &__active {
+            color: #fff;
+            background-color: #0bab64;
+        }
+    }
+}

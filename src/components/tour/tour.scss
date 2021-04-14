@@ -21,7 +21,21 @@
                height: auto;
                border-radius: 5px;
            }
-        }
+        // flex-direction: column;
+        // padding-left: 25px;
+        // &__title {
+        //     font-weight: bold;
+        //     font-size: 36px;
+        // }
+        // &__description {
+        //     text-align: left;
+        //     font-size: 18px;
+        // }
+        // &__price {
+        //     font-weight: 600;
+        //     font-size: 24px;
+        //     color: #0BAB64;
+        // }
         &__info{
             min-width: 50vw;
             display: flex;
@@ -39,9 +53,9 @@
                 font-size: 24px;
                 color: #B3D929;
             }
+        }
     }
     }
-
 }
 @media screen and (max-width:1200px){
     .tour{

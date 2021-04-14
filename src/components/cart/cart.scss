@@ -2,9 +2,7 @@
   button{
     background-color: #eee;
   }
-    
 }
-
 .modal {
   overflow: auto;
   display: flex;
@@ -14,12 +12,13 @@
   }
 }
 .modal__modal-in {
+  z-index: 2;
   color:#333;
   max-height: 80%;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   min-width: 730px;
   top: 10%;
   right: 10%;
@@ -40,13 +39,14 @@
       width: 50px;
       height: 50px;
       border: none;
+      border-radius: 5px;
       box-shadow: 0 3px 5px 0 rgb(60 60 60 / 90%);
       &:hover {
         color:white;
         background-color: #555555;
         transition: 0.1s;
         box-shadow: 0 4px 7px 0 rgb(60 60 60 / 90%);
-    }
+      }
     }
   }
   &__list {
@@ -70,12 +70,13 @@
     &__btn {
       width: 100px;
       border: none;
+      border-radius: 5px;
       box-shadow: 0 3px 5px 0 rgb(60 60 60 / 90%);
       font-weight: 500;
       font-size: 16px;
       &:hover {
         color:white;
-        background-color: #777777;
+        background-color: #0BAB64;
         transition: 0.1s;
         box-shadow: 0 4px 7px 0 #0BAB64;
     }
