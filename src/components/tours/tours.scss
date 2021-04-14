@@ -2,23 +2,23 @@
    
     margin: 5px 80px;
    
-    &__page-number {
-        font-size: 24px;
-        color: #333;
-        cursor: pointer;
-        &_active {
-            color: #9abb24;
-        }
-    }
     &__sort {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        margin: 0 20px ;
+        justify-content: space-around;
+        margin: 0 0 ;
         font-weight: 500;
+        flex-wrap: wrap;
+        &__el{
+            flex-wrap: wrap;
+            div {
+                display: inline;
+            }
+        }
         &__btn {
                 background: #FFF;
                 display: flex;
+                align-items: center;
                 border: none;
                 border-radius: 5px;
                 box-shadow: 0 0px 4px 0 rgb(60 60 60 / 90%);

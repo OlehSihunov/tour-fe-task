@@ -40,8 +40,8 @@ const Cart = observer(() => {
     return (
         <div className="cart">
             <div className="modal-component" >
-                <button onClick={toggleModal} disabled={!filteredTours.length}>
-                    {filteredTours.length ? <AddShoppingCartIcon /> : <ShoppingCartIcon />}
+                <button onClick={toggleModal} disabled={!filteredTours.length} className="modal-component__btn">
+                    {filteredTours.length ? <AddShoppingCartIcon  className="modal-component__btn__icon"/> : <ShoppingCartIcon className="modal-component__btn__icon"/>}
                 </button>
             </ div>
             {showModal && (
