@@ -23,7 +23,7 @@ const LoginPage = observer(() => {
            {signInF?
            <SignInForm signIn={signIn} isLogged={isLogged} switchForm ={switchForm} /> 
            :
-           <SignUpForm addNewUser={addNewUser}   switchForm ={switchForm} isLogged={isLogged}/>   
+           <SignUpForm addNewUser={addNewUser} switchForm ={switchForm} isLogged={isLogged}/>   
             }    
        </div>
     )
