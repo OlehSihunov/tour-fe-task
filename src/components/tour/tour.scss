@@ -1,33 +1,91 @@
 .tour {
+    margin: 0 auto;
     padding: 20px  50px;
     display: flex;
-    flex-direction: row;
+    flex-direction:column;
     justify-content: center;
-    &__img {
-       min-width: 600px;
-       img {
-           width: 100%;
-           height: auto;
-           border-radius: 5px;
-       }
+    &__title{
+        margin: 0 0 50px 0;
+        font-weight: bold;
+        font-size: 36px;
     }
-    &__info{
-        min-width: 400px;
+    &__goback-btn{
+        margin: 30px;
         display: flex;
-        flex-direction: column;
-        padding-left: 25px;
-        &__title {
-            font-weight: bold;
-            font-size: 36px;
+        font-weight: 500;
+        font-size: 18px;
+        color: #0bab64;
+        justify-content: flex-start;
+        span {
+            cursor: pointer;
+            padding: 5px 15px;
+            box-shadow: 0 0 4px dimgray ;
+            border-radius: 5px;
+            &:hover {
+                box-shadow: 0 0 8px #0bab64;
+                background: #0bab64;
+                color: #fff;
+                transition: 0.1s;
+            }
         }
-        &__description {
-            text-align: left;
-            font-size: 18px;
+    }
+    .container{
+        margin: 0 auto;
+        width: 60vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        &__img {
+           min-width: 40vw;
+           img {
+               margin: 0;
+               height: auto;
+               border-radius: 5px;
+           }
         }
-        &__price {
-            font-weight: 600;
-            font-size: 24px;
-            color: #0BAB64;
+        &__info{
+            min-width: 50vw;
+            display: flex;
+            flex-direction: column;
+            padding-left: 25px;
+            margin-right: 50px;    
+            &__description {
+                text-align: left;
+                font-size: 18px;
+            }
+            &__price {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                font-weight: 600;
+                font-size: 24px;
+                color: #0bab64;
+            }
+            &__btn {
+                cursor: pointer;
+                font-weight: 500;
+                padding: 0 20px;
+                background: #fff;
+                box-shadow: 0 0 4px dimgray ;
+                color: #0bab64;
+                border: none;
+                border-radius: 5px;
+                &:hover {
+                    color: #fff;
+                    background: #0bab64;
+                    transition: 0.1s;
+                    box-shadow: 0 0 8px #0bab64 ;
+                }
+                &_selected {
+                    color: dimgray;
+                    &:hover {
+                        color: gray;
+                        transition: 0.1s;
+                        box-shadow: 0 0 8px dimgray ;
+                        background: #fff;
+                    }
+                }
+            }
         }
     }
 
