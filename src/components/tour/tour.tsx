@@ -51,7 +51,7 @@ const Tour = () => {
     return (
 
         <div className='tour'>
-            <div className='tour__goback-btn'><span onClick={() => goBack()}>&#8592;Back to tours</span></div>
+            <div className='tour__goback-btn'><span onClick={() => goBack()}>&#8592; Back to tours</span></div>
             <p className="tour__title">{tour?.title}</p>
             <div className='container'>
                 <div className ='container__img'>                   
