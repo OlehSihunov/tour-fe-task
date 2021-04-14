@@ -1,5 +1,4 @@
 import './tour.scss'
-import './tourphoto.scss'
 import React, {useEffect, useState}  from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import rootStore from '../../stores/rootStore'
