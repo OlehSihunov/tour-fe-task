@@ -1,6 +1,15 @@
 .modal-component {
-  button{
-    background-color: #eee;
+ 
+  &__btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    &:disabled{
+      &{
+        color: rgb(182, 182, 182);
+      }
+    }
+   
   }
 }
 .modal {

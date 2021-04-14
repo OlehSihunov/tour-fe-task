@@ -37,11 +37,13 @@
         font-size: 16px;
         line-height: 150%;
         color: #B2B7BB;
+        cursor: default;
         &:nth-last-child(2) {
             text-decoration: underline;
         }
         span {
-            color: #4285F4
+            color: #0bab64;
+            cursor: pointer;
         }
     }
    
