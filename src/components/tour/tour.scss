@@ -19,30 +19,16 @@
            min-width: 40vw;
            img {
                margin: 0;
-               width: 100%;
                height: auto;
                border-radius: 5px;
            }
-        // flex-direction: column;
-        // padding-left: 25px;
-        // &__title {
-        //     font-weight: bold;
-        //     font-size: 36px;
-        // }
-        // &__description {
-        //     text-align: left;
-        //     font-size: 18px;
-        // }
-        // &__price {
-        //     font-weight: 600;
-        //     font-size: 24px;
-        //     color: #0BAB64;
-        // }
+        }
         &__info{
             min-width: 50vw;
             display: flex;
             flex-direction: column;
-            padding-left: 25px;           
+            padding-left: 25px;
+            margin-right: 50px;    
             &__description {
                 text-align: left;
                 font-size: 18px;
@@ -57,7 +43,7 @@
             }
         }
     }
-    }
+
 }
 @media screen and (max-width:1200px){
     .tour{

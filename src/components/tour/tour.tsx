@@ -60,7 +60,7 @@ const Tour = () => {
                 </div>
                 <div className = 'container__info'>
                     <p className="container__info__description">{tour?.description}</p>
-                    <p className="container__info__price">Price: {tour?.price} 
+                    <p className="container__info__price">Price: {tour?.price}$ 
                     <button className={`container-card__footer__add-btn ${isSelected ? 'container-card__footer__add-btn_selected' : ''}`}
             onClick={onAdd}>{isSelected?'In Cart' : 'Add to cart'}</button></p>
                 </div>
