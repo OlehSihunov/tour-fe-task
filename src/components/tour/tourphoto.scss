@@ -12,9 +12,11 @@ a.lightbox img {
     
     .lightbox-target {
     position: fixed;
-    width: 100%;
+    top: 0px;
+    left: 0px;
+    justify-self: center;
+    width: 100vw;
     background: rgba(0,0,0,.7);
-    width: 100%;
     opacity: 0;
     -webkit-transition: opacity .5s ease-in-out;
     -moz-transition: opacity .5s ease-in-out;
