@@ -50,26 +50,42 @@
    
 }
 
-
-@media screen and (max-width: 1024px) {
+@media  screen and (max-height:900px) {
     .login-form {
-        height: 626px;
-        width: 488px;
-        
+        margin-top: 25px;
+        height: 500px;
+        width:440px;
+        >h1{
+            margin-top: 40px;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) and ( max-height: 700px) {
+    .login-form {
+        height: 450px;
+        width: 390px;
+        >h1{
+            margin-top: 40px;
+        }
     }
   }
 
 @media screen and (max-width: 768px) {
+   
     .login-form {
         margin-right: 0px;
-        height: 570px;
-        width: 450px;
+        height: 430px;
+        width: 380px;
+        >h1{
+            margin-top: 30px;
+        }
     }
   }
 
 @media screen and (max-width: 445px) {
     .login-form {
-        height: 500px;
+        height: 420px;
         width: 360px;
         margin-right: 0px;
         >h1 {
@@ -86,7 +102,7 @@
   }
 @media screen and (max-width: 376px) {
     .login-form {
-        height: 488px;
+        height: 400px;
         width: 300px;
        
     }
