@@ -42,7 +42,7 @@ const Tours = observer(() => {
         <div className='tours'>
             <h1>Tours</h1>  
             <div className ='tours__sort'>
-                <div>
+                <div className ='tours__sort__el'>
                 <select onChange ={(e)=>{
                     setFilter(e.target.value)
                     setPage(0)}}>
@@ -53,19 +53,23 @@ const Tours = observer(() => {
                     setSize(parseInt(e.target.value))
                     setPage(0)
                     }}>
-                    <option value ='3' >3</option>
+                    <option value ='3' >3 </option>
                     <option value = '6'>6</option>
                     <option selected value = '9'>9</option>
                     <option value = '12'>12</option>
                     <option value = '24'>24</option>
                 </select>
                 </div>
-                <div>
+                <div className ='tours__sort__el'>
                 <form>
-                    <label>Min price:</label>
-                    <input value = {minPrice} onChange = {e=>setMinPrice(parseInt(e.target.value)||0)}></input>
-                    <label>Max price:</label>
-                    <input value = {maxPrice} placeholder ='max price' onChange = {e=>setMaxPrice(parseInt(e.target.value)||0)}></input>
+                    <div>
+                        <label>Min price:</label>
+                        <input value = {minPrice} onChange = {e=>setMinPrice(parseInt(e.target.value)||0)}></input>
+                    </div>
+                    <div>
+                        <label>Max price:</label>
+                        <input value = {maxPrice}  placeholder ='max price' onChange = {e=>setMaxPrice(parseInt(e.target.value)||0)}></input>
+                    </div>
                 </form>
                 <button className={`tours__sort__btn`}
                  onClick={()=>filter()}>Filter</button>
