@@ -10,9 +10,11 @@
         font-size: 36px;
     }
     .container{
+        margin: 0 auto;
         width: 60vw;
         display: flex;
         flex-direction: row;
+        justify-content: center;
         &__img {
            min-width: 40vw;
            img {
