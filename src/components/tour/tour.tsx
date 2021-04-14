@@ -1,7 +1,7 @@
 import './tour.scss'
 import './tourphoto.scss'
 import React, {useEffect, useState}  from 'react'
-import {useParams} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import rootStore from '../../stores/rootStore'
 import ITour from '../../interfaces/ITour'
 
@@ -20,6 +20,7 @@ const Tour = () => {
     const {addNewTour, selectedTours} = rootStore.cartStore;
     const params :IURLParams = useParams()
     const [isSelected,setSelected ]= useState(false )
+    const history = useHistory();
     const [tour,setTour] = useState<ITour>({
         id: 0,
         title: "loading",
@@ -40,6 +41,9 @@ const Tour = () => {
         setTour(tour)
         setSelected(!!selectedTours.find(etour => etour.id === tour.id&&etour.userId === user.id))
     }
+    const goBack = () => {
+        history.push('/') 
+    } 
      useEffect( () => {
         getTour()
 
@@ -47,25 +51,19 @@ const Tour = () => {
     return (
 
         <div className='tour'>
+            <div className='tour__goback-btn'><span onClick={() => goBack()}>&#8592;Back to tours</span></div>
             <p className="tour__title">{tour?.title}</p>
             <div className='container'>
-                <div className ='tour__img'>
-                    <a className="lightbox" href="#dog">
-                        <img src={tour.imageUrl} alt="tooo"/>
-                    </a> 
-                    <div className="lightbox-target" id="dog">
-                        <img src={tour.imageUrl} alt="tooo"/>
-                        <a className="lightbox-close" href="#"></a>
-                    </div>               
+                <div className ='container__img'>                   
+                        <img src={tour.imageUrl} alt="tooo"/> 
                 </div>
                 <div className = 'container__info'>
                     <p className="container__info__description">{tour?.description}</p>
                     <p className="container__info__price">Price: {tour?.price}$ 
-                    <button className={`container-card__footer__add-btn ${isSelected ? 'container-card__footer__add-btn_selected' : ''}`}
+                    <button className={`container__info__btn ${isSelected ? 'container__info__btn_selected' : ''}`}
             onClick={onAdd}>{isSelected?'In Cart' : 'Add to cart'}</button></p>
                 </div>
-            </div>
-            
+            </div>            
         </div>
     )
 }
